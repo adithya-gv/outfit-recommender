@@ -18,7 +18,7 @@ Our problem is twofold.
 ### Intended Methods
 Each of the two subproblems within our overall problem has distinct approaches.
 
-###### Clothing Similarity
+##### Clothing Similarity
 We plan to measure clothing similarity by applying a clustering algorithm over the features of each clothing item. We plan to apply a variety of clustering algorithms, ranging from K-Means to DBSCAN, to see which captures the shape of the data the best.
 
 ##### Recommender System
