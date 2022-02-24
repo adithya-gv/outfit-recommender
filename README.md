@@ -1,5 +1,6 @@
 # Outfit Recommender
 Group 40's CS 4641 Project: a clothing recommendation system.
+
 Project by: Jaxon Isenberg, Rishabh Jain, Rahi Kotadia, Adithya Vasudev, and Vivek Vijaykumar
 
 ## Introduction
@@ -11,6 +12,12 @@ Clothing shopping is something we do in our everyday lives, and yet it still rem
 The dataset we plan to use is the H&M clothing purchase history dataset. The dataset has both text data of over 1 million logged clothing transactions, each attributed to a given ID representing a distinct person. The dataset also has metadata for clothing and images of each clothing item.
 
 ## Problem Statement
+
+### Motivation
+The motivation of our project was to bring the recommendation system algorithms, which have pervaded our media world, to an area of shopping that is highly personal and varied: clothes shopping. A secondary motivation was to go beyond simple 
+analysis of purchasing data and use data intrinsic to the clothing data and user data to provide recommendations that target particular features of the user itself.
+
+### Our Problems
 Our problem is twofold. 
 1. Measure the similarity between two arbitrary pieces of clothing and use this measurement to construct groupings of similar clothings. 
 2. Construct a recommender system that will recommend clothing based on their purchase history. 
