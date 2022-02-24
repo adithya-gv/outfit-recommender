@@ -1,5 +1,6 @@
 # Outfit Recommender
 Group 40's CS 4641 Project: a clothing recommendation system.
+
 Project by: Jaxon Isenberg, Rishabh Jain, Rahi Kotadia, Adithya Vasudev, and Vivek Vijaykumar
 
 ## Introduction
@@ -15,7 +16,14 @@ Recommendation Systems have been a well-researched topic for years, and have bee
 ### Dataset Overview
 The dataset we plan to use is the H&M clothing purchase history dataset. The dataset has both text data of over 1 million logged clothing transactions, each attributed to a given ID representing a distinct person. The dataset also has metadata for clothing and images of each clothing item.
 
-### Problem Statement
+
+## Problem Statement
+
+### Motivation
+The motivation of our project was to bring the recommendation system algorithms, which have pervaded our media world, to an area of shopping that is highly personal and varied: clothes shopping. A secondary motivation was to go beyond simple analysis of purchasing data and use data intrinsic to the clothing data and user data to provide recommendations that target particular features of the user itself.
+
+### Our Problems
+
 Our problem is twofold. 
 1. Measure the similarity between two arbitrary pieces of clothing and use this measurement to construct groupings of similar clothings. 
 2. Construct a recommender system that will recommend clothing based on their purchase history. 
@@ -34,10 +42,10 @@ For the clustering part of the project, it is likely that clothing with similar 
 
 ## References
 
-(1) "Aesthetic-based Clothing Recommendation" (https://arxiv.org/pdf/1809.05822.pdf) 
-(2) "Image Based Fashion Product Recommendation with Deep Learning" (https://arxiv.org/pdf/1805.08694.pdf)
-(3)"Towards Fashion Recommendation: An AI System for Clothing Data Retrieval and Analysis" (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7256565/)
-(4)"Understanding Professional Fashion Stylists’ Outfit Recommendation Process: A Qualitative Study" (https://www.researchgate.net/publication 350315907_Understanding_Professional_Fashion_Stylists'_Outfit_Recommendation_Process_A_Qualitative_Study)
+1.  "Aesthetic-based Clothing Recommendation" (https://arxiv.org/pdf/1809.05822.pdf) 
+2. "Image Based Fashion Product Recommendation with Deep Learning" (https://arxiv.org/pdf/1805.08694.pdf)
+3. "Towards Fashion Recommendation: An AI System for Clothing Data Retrieval and Analysis" (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7256565/)
+4. "Understanding Professional Fashion Stylists’ Outfit Recommendation Process: A Qualitative Study" (https://www.researchgate.net/publication 350315907_Understanding_Professional_Fashion_Stylists'_Outfit_Recommendation_Process_A_Qualitative_Study)
 
 
 ## Timeline
