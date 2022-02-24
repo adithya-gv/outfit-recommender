@@ -1,7 +1,7 @@
 # Outfit Recommender
 Group 40's CS 4641 Project: a clothing recommendation system.
 
-Project by: Jaxon Isenberg, Rishabh Jain, Rahi Kotadia, Adithya Vasudev, and Vivek Vijaykumar
+Project by: Jackson Isenberg, Rishabh Jain, Rahi Kotadia, Adithya Vasudev, and Vivek Vijaykumar
 
 ## Introduction
 Clothing shopping is something we do in our everyday lives, and yet it still remains a very difficult and personal decision whenever we go shop. However, with the way we shop, our history of shopping, and the similarities and differences between the clothing items themselves, this problem seems ripe for automation and machine learning to provide suggestions and alter the way we shop. Given the growth of online shopping during the pandemic, there has been a surge in technologies that have worked towards targeting the fashion industry, particularly leveraging data about customer habits and product appearances to make smart recommendations. 
