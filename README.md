@@ -34,7 +34,7 @@ We plan to measure clothing similarity by applying a clustering algorithm over t
 To create the clothing recommender system, we plan to test a variety of popular approaches. The two front-runners for our recommender system so far are an artificial neural network, and a support vector machine. 
 
 ## Potential Results
-For the clustering part of the project, it is likely that clothing with similar colors will be grouped. This is the most obvious way for the algorithm to perform. We can shift the focus awway from color by converting images to grayscale so that we can see groupings based on clothing type, such as shirt/pants/shorts. The recommendation system should be able to take in a customer's purchase history of clothing and recommend items for them to purchase, ideally based not just on similarity but on learned attributes about what might fit well with prior pruchases and what the customer might like. 
+For the clustering part of the project, it is likely that clothing with similar colors will be grouped. This is the most obvious way for the algorithm to perform. We can shift the focus away from color by converting images to grayscale so that we can see groupings based on clothing type, such as shirt/pants/shorts. The recommendation system should be able to take in a customer's purchase history of clothing and recommend items for them to purchase, ideally based not just on similarity but on learned attributes about what might fit well with prior purchases and what the customer might like. 
 
 ## References
 
