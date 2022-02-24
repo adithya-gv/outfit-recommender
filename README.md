@@ -8,7 +8,7 @@ Clothing shopping is something we do in our everyday lives, and yet it still rem
 ## Background
 
 ## Dataset Overview
-The dataset we plan to use is the H&M clothing purchase history dataset. The dataset has both text data of over 1 million logged clothing transactions, each attributed to a given ID representing a distinct person. The dataset also has metadata of the clothes, as well as metadata about the clothes, and images of each clothing item.
+The dataset we plan to use is the H&M clothing purchase history dataset. The dataset has both text data of over 1 million logged clothing transactions, each attributed to a given ID representing a distinct person. The dataset also has metadata for clothing and images of each clothing item.
 
 ## Problem Statement
 Our problem is twofold. 
@@ -25,6 +25,7 @@ We plan to measure clothing similarity by applying a clustering algorithm over t
 To create the clothing recommender system, we plan to test a variety of popular approaches. The two front-runners for our recommender system so far are an artificial neural network, and a support vector machine. 
 
 ## Potential Results
+For the clustering part of the project, it is likely that clothing with similar colors will be grouped. This is the most obvious way for the algorithm to perform. We hope to also see groupings based on clothing type, such as shirt/pants/shorts. The recommendation system should be able to take in a customer's purchase history of clothing and recommend items for them to purchase, ideally based not just on similarity but on learned attributes about what might fit well with prior pruchases and what the customer might like. 
 
 ## References
 
