@@ -5,6 +5,8 @@ Project by: Jackson Isenberg, Rishabh Jain, Rahi Kotadia, Adithya Vasudev, and V
 
 Video Link: youtube.com/watch?v=8F1JnTk34p4
 
+Website Link: https://adithya-gv.github.io/outfit-recommender/
+
 ## Introduction
 Clothing shopping is a frequent occurrence, yet it remains a difficult and personal decision. Given our history of shopping and the characteristics of clothing items, we believe that automation and machine learning have the power to boost our decision making. There are many technologies targeting the fashion industry, usually leveraging data about customer habits and product appearances to make smart recommendations. 
 
