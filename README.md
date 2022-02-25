@@ -45,40 +45,271 @@ For the clustering part of the project, it is likely that clothing with similar 
 
 
 ## Timeline
-| GANTT CHART                         |                                     |            |          |          |
-|-------------------------------------|-------------------------------------|:----------:|:--------:|:--------:|
-|                                     |                                     |            |          |          |
-|                       PROJECT TITLE | Outfit Recommender Project Timeline |            |          |          |
-|                                     |                                     |            |          |          |
-|                                     |                                     |            |          |          |
-|              TASK TITLE             |              TASK OWNER             | START DATE | DUE DATE | DURATION |
-|                                     |                                     |            |          |          |
-| Project Team Composition            | All                                 |   1/17/22  |  2/1/22  |    14    |
-| PROJECT PROPOSAL                    |                                     |            |          |          |
-| Introduction & Background           | Vivek, Adithya                      |   2/2/22   |  2/24/22 |    22    |
-| References                          | Vivek                               |   2/2/22   |  2/24/22 |    22    |
-| Problem Definition                  | Rahi                                |   2/2/22   |  2/24/22 |    22    |
-| Timeline                            | Rishabh/Rahi                        |   2/2/22   |  2/24/22 |    22    |
-| Methods                             | Adithya                             |   2/2/22   |  2/24/22 |    22    |
-| Potential Dataset                   | Vivek                               |   2/2/22   |  2/24/22 |    22    |
-| Potential Results & Discussion      | Rishabh                             |   2/2/22   |  2/24/22 |    22    |
-| Video Creation & Recording          | Jackson                             |   2/2/22   |  2/24/22 |    22    |
-| GitHub Page                         | Adithya                             |   2/2/22   |  2/24/22 |    22    |
-| MIDTERM REPORT                      |                                     |            |          |          |
-| Clustering Algorithm Selection (M1) | All                                 |   2/25/22  |  2/28/22 |     3    |
-| M1 Data Cleaning                    | Rahi                                |   2/25/22  |  3/4/22  |     9    |
-| M1 Data Visualization               | Rishabh                             |   2/25/22  |  3/4/22  |     9    |
-| M1 Feature Reduction                | Jackson                             |   2/25/22  |  3/4/22  |     9    |
-| M1 Implementation & Coding          | Adithya                             |   3/5/22   |  3/14/22 |     9    |
-| M1 Results Evaluation               | All                                 |   3/15/22  |  3/18/22 |     3    |
-| Recommendation Alg Selection (M2)   | All                                 |   2/25/22  |  2/28/22 |     3    |
-| M2 Data Cleaning                    | Vivek                               |   3/19/22  |  4/4/22  |    15    |
-| M2 Data Visualization               | Rishabh                             |   3/19/22  |  4/4/22  |    15    |
-| M2 Feature Reduction                | Adithya                             |   3/19/22  |  4/4/22  |    15    |
-| Midterm Report                      | All                                 |   3/19/22  |  4/5/22  |    16    |
-| FINAL REPORT                        |                                     |            |          |          |
-| M2 Coding & Implementation          | Jackson                             |   4/5/22   |  4/19/22 |    14    |
-| M2 Results Evaluation               | All                                 |   4/20/22  |  4/21/22 |     1    |
-| M1-M3 Comparison                    | All                                 |   4/22/22  |  4/24/22 |     2    |
-| Video Creation & Recording          | All                                 |   4/18/22  |  4/26/22 |     8    |
-| Final Report                        | All                                 |   4/18/22  |  4/26/22 |     8    |
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-c3ow{border-color:inherit;text-align:center;vertical-align:top}
+.tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+.tg .tg-dvpl{border-color:inherit;text-align:right;vertical-align:top}
+</style>
+<table class="tg">
+<thead>
+  <tr>
+    <th class="tg-0pky">GANTT CHART</th>
+    <th class="tg-0pky"> </th>
+    <th class="tg-c3ow"> </th>
+    <th class="tg-c3ow"> </th>
+    <th class="tg-c3ow"> </th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td class="tg-0pky"> </td>
+    <td class="tg-0pky"> </td>
+    <td class="tg-0pky"> </td>
+    <td class="tg-0pky"> </td>
+    <td class="tg-c3ow"> </td>
+  </tr>
+  <tr>
+    <td class="tg-dvpl">PROJECT TITLE</td>
+    <td class="tg-0pky">Outfit Recommender Project Timeline</td>
+    <td class="tg-0pky"></td>
+    <td class="tg-0pky"></td>
+    <td class="tg-0pky"> </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"> </td>
+    <td class="tg-0pky"> </td>
+    <td class="tg-0pky"> </td>
+    <td class="tg-0pky"> </td>
+    <td class="tg-c3ow"> </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky"></td>
+    <td class="tg-0pky"></td>
+    <td class="tg-0pky"></td>
+    <td class="tg-0pky"></td>
+    <td class="tg-0pky"></td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow">TASK TITLE</td>
+    <td class="tg-c3ow">TASK OWNER</td>
+    <td class="tg-c3ow">START DATE</td>
+    <td class="tg-c3ow">DUE DATE</td>
+    <td class="tg-c3ow">DURATION</td>
+  </tr>
+  <tr>
+    <td class="tg-c3ow"></td>
+    <td class="tg-c3ow"></td>
+    <td class="tg-c3ow"></td>
+    <td class="tg-c3ow"></td>
+    <td class="tg-c3ow"></td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Project Team Composition</td>
+    <td class="tg-0pky">All</td>
+    <td class="tg-c3ow">1/17/22</td>
+    <td class="tg-c3ow">2/1/22</td>
+    <td class="tg-c3ow">14</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">PROJECT PROPOSAL</td>
+    <td class="tg-0pky"> </td>
+    <td class="tg-0pky"> </td>
+    <td class="tg-0pky"> </td>
+    <td class="tg-0pky"> </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Introduction &amp; Background</td>
+    <td class="tg-0pky">Vivek, Adithya</td>
+    <td class="tg-c3ow">2/2/22</td>
+    <td class="tg-c3ow">2/24/22</td>
+    <td class="tg-c3ow">22</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">References</td>
+    <td class="tg-0pky">Vivek</td>
+    <td class="tg-c3ow">2/2/22</td>
+    <td class="tg-c3ow">2/24/22</td>
+    <td class="tg-c3ow">22</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Problem Definition</td>
+    <td class="tg-0pky">Rahi</td>
+    <td class="tg-c3ow">2/2/22</td>
+    <td class="tg-c3ow">2/24/22</td>
+    <td class="tg-c3ow">22</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Timeline</td>
+    <td class="tg-0pky">Rishabh/Rahi</td>
+    <td class="tg-c3ow">2/2/22</td>
+    <td class="tg-c3ow">2/24/22</td>
+    <td class="tg-c3ow">22</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Methods</td>
+    <td class="tg-0pky">Adithya</td>
+    <td class="tg-c3ow">2/2/22</td>
+    <td class="tg-c3ow">2/24/22</td>
+    <td class="tg-c3ow">22</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Potential Dataset</td>
+    <td class="tg-0pky">Vivek</td>
+    <td class="tg-c3ow">2/2/22</td>
+    <td class="tg-c3ow">2/24/22</td>
+    <td class="tg-c3ow">22</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Potential Results &amp; Discussion</td>
+    <td class="tg-0pky">Rishabh</td>
+    <td class="tg-c3ow">2/2/22</td>
+    <td class="tg-c3ow">2/24/22</td>
+    <td class="tg-c3ow">22</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Video Creation &amp; Recording</td>
+    <td class="tg-0pky">Jackson</td>
+    <td class="tg-c3ow">2/2/22</td>
+    <td class="tg-c3ow">2/24/22</td>
+    <td class="tg-c3ow">22</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">GitHub Page</td>
+    <td class="tg-0pky">Adithya</td>
+    <td class="tg-c3ow">2/2/22</td>
+    <td class="tg-c3ow">2/24/22</td>
+    <td class="tg-c3ow">22</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">MIDTERM REPORT</td>
+    <td class="tg-0pky"> </td>
+    <td class="tg-0pky"> </td>
+    <td class="tg-0pky"> </td>
+    <td class="tg-0pky"> </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Clustering Algorithm Selection (M1)</td>
+    <td class="tg-0pky">All</td>
+    <td class="tg-c3ow">2/25/22</td>
+    <td class="tg-c3ow">2/28/22</td>
+    <td class="tg-c3ow">3</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">M1 Data Cleaning</td>
+    <td class="tg-0pky">Rahi</td>
+    <td class="tg-c3ow">2/25/22</td>
+    <td class="tg-c3ow">3/4/22</td>
+    <td class="tg-c3ow">9</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">M1 Data Visualization</td>
+    <td class="tg-0pky">Rishabh</td>
+    <td class="tg-c3ow">2/25/22</td>
+    <td class="tg-c3ow">3/4/22</td>
+    <td class="tg-c3ow">9</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">M1 Feature Reduction</td>
+    <td class="tg-0pky">Jackson</td>
+    <td class="tg-c3ow">2/25/22</td>
+    <td class="tg-c3ow">3/4/22</td>
+    <td class="tg-c3ow">9</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">M1 Implementation &amp; Coding</td>
+    <td class="tg-0pky">Adithya</td>
+    <td class="tg-c3ow">3/5/22</td>
+    <td class="tg-c3ow">3/14/22</td>
+    <td class="tg-c3ow">9</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">M1 Results Evaluation</td>
+    <td class="tg-0pky">All</td>
+    <td class="tg-c3ow">3/15/22</td>
+    <td class="tg-c3ow">3/18/22</td>
+    <td class="tg-c3ow">3</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Recommendation Alg Selection (M2)</td>
+    <td class="tg-0pky">All</td>
+    <td class="tg-c3ow">2/25/22</td>
+    <td class="tg-c3ow">2/28/22</td>
+    <td class="tg-c3ow">3</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">M2 Data Cleaning</td>
+    <td class="tg-0pky">Vivek</td>
+    <td class="tg-c3ow">3/19/22</td>
+    <td class="tg-c3ow">4/4/22</td>
+    <td class="tg-c3ow">15</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">M2 Data Visualization</td>
+    <td class="tg-0pky">Rishabh</td>
+    <td class="tg-c3ow">3/19/22</td>
+    <td class="tg-c3ow">4/4/22</td>
+    <td class="tg-c3ow">15</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">M2 Feature Reduction</td>
+    <td class="tg-0pky">Adithya</td>
+    <td class="tg-c3ow">3/19/22</td>
+    <td class="tg-c3ow">4/4/22</td>
+    <td class="tg-c3ow">15</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Midterm Report</td>
+    <td class="tg-0pky">All</td>
+    <td class="tg-c3ow">3/19/22</td>
+    <td class="tg-c3ow">4/5/22</td>
+    <td class="tg-c3ow">16</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">FINAL REPORT</td>
+    <td class="tg-0pky"> </td>
+    <td class="tg-0pky"> </td>
+    <td class="tg-0pky"> </td>
+    <td class="tg-0pky"> </td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">M2 Coding &amp; Implementation</td>
+    <td class="tg-0pky">Jackson</td>
+    <td class="tg-c3ow">4/5/22</td>
+    <td class="tg-c3ow">4/19/22</td>
+    <td class="tg-c3ow">14</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">M2 Results Evaluation</td>
+    <td class="tg-0pky">All</td>
+    <td class="tg-c3ow">4/20/22</td>
+    <td class="tg-c3ow">4/21/22</td>
+    <td class="tg-c3ow">1</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">M1-M3 Comparison</td>
+    <td class="tg-0pky">All</td>
+    <td class="tg-c3ow">4/22/22</td>
+    <td class="tg-c3ow">4/24/22</td>
+    <td class="tg-c3ow">2</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Video Creation &amp; Recording</td>
+    <td class="tg-0pky">All</td>
+    <td class="tg-c3ow">4/18/22</td>
+    <td class="tg-c3ow">4/26/22</td>
+    <td class="tg-c3ow">8</td>
+  </tr>
+  <tr>
+    <td class="tg-0pky">Final Report</td>
+    <td class="tg-0pky">All</td>
+    <td class="tg-c3ow">4/18/22</td>
+    <td class="tg-c3ow">4/26/22</td>
+    <td class="tg-c3ow">8</td>
+  </tr>
+</tbody>
+</table>
