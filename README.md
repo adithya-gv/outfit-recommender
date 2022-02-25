@@ -45,3 +45,40 @@ For the clustering part of the project, it is likely that clothing with similar 
 
 
 ## Timeline
+| GANTT CHART                         |                                     |            |          |          |
+|-------------------------------------|-------------------------------------|:----------:|:--------:|:--------:|
+|                                     |                                     |            |          |          |
+|                       PROJECT TITLE | Outfit Recommender Project Timeline |            |          |          |
+|                                     |                                     |            |          |          |
+|                                     |                                     |            |          |          |
+|              TASK TITLE             |              TASK OWNER             | START DATE | DUE DATE | DURATION |
+|                                     |                                     |            |          |          |
+| Project Team Composition            | All                                 |   1/17/22  |  2/1/22  |    14    |
+| PROJECT PROPOSAL                    |                                     |            |          |          |
+| Introduction & Background           | Vivek, Adithya                      |   2/2/22   |  2/24/22 |    22    |
+| References                          | Vivek                               |   2/2/22   |  2/24/22 |    22    |
+| Problem Definition                  | Rahi                                |   2/2/22   |  2/24/22 |    22    |
+| Timeline                            | Rishabh/Rahi                        |   2/2/22   |  2/24/22 |    22    |
+| Methods                             | Adithya                             |   2/2/22   |  2/24/22 |    22    |
+| Potential Dataset                   | Vivek                               |   2/2/22   |  2/24/22 |    22    |
+| Potential Results & Discussion      | Rishabh                             |   2/2/22   |  2/24/22 |    22    |
+| Video Creation & Recording          | Jackson                             |   2/2/22   |  2/24/22 |    22    |
+| GitHub Page                         | Adithya                             |   2/2/22   |  2/24/22 |    22    |
+| MIDTERM REPORT                      |                                     |            |          |          |
+| Clustering Algorithm Selection (M1) | All                                 |   2/25/22  |  2/28/22 |     3    |
+| M1 Data Cleaning                    | Rahi                                |   2/25/22  |  3/4/22  |     9    |
+| M1 Data Visualization               | Rishabh                             |   2/25/22  |  3/4/22  |     9    |
+| M1 Feature Reduction                | Jackson                             |   2/25/22  |  3/4/22  |     9    |
+| M1 Implementation & Coding          | Adithya                             |   3/5/22   |  3/14/22 |     9    |
+| M1 Results Evaluation               | All                                 |   3/15/22  |  3/18/22 |     3    |
+| Recommendation Alg Selection (M2)   | All                                 |   2/25/22  |  2/28/22 |     3    |
+| M2 Data Cleaning                    | Vivek                               |   3/19/22  |  4/4/22  |    15    |
+| M2 Data Visualization               | Rishabh                             |   3/19/22  |  4/4/22  |    15    |
+| M2 Feature Reduction                | Adithya                             |   3/19/22  |  4/4/22  |    15    |
+| Midterm Report                      | All                                 |   3/19/22  |  4/5/22  |    16    |
+| FINAL REPORT                        |                                     |            |          |          |
+| M2 Coding & Implementation          | Jackson                             |   4/5/22   |  4/19/22 |    14    |
+| M2 Results Evaluation               | All                                 |   4/20/22  |  4/21/22 |     1    |
+| M1-M3 Comparison                    | All                                 |   4/22/22  |  4/24/22 |     2    |
+| Video Creation & Recording          | All                                 |   4/18/22  |  4/26/22 |     8    |
+| Final Report                        | All                                 |   4/18/22  |  4/26/22 |     8    |
