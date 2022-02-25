@@ -4,25 +4,25 @@ Group 40's CS 4641 Project: a clothing recommendation system.
 Project by: Jackson Isenberg, Rishabh Jain, Rahi Kotadia, Adithya Vasudev, and Vivek Vijaykumar
 
 ## Introduction
-Clothing shopping is something we do in our everyday lives, and yet it still remains a very difficult and personal decision whenever we go shop. However, with the way we shop, our history of shopping, and the similarities and differences between the clothing items themselves, this problem seems ripe for automation and machine learning to provide suggestions and alter the way we shop. Given the growth of online shopping during the pandemic, there has been a surge in technologies that have worked towards targeting the fashion industry, particularly leveraging data about customer habits and product appearances to make smart recommendations. 
+Shopping for clothing can be hard. Given our history of shopping and the characteristics of clothing items, we believe that automation and machine learning have the power to boost our decision making. There has been a surge in technologies that have worked towards targeting the fashion industry, particularly leveraging data about customer habits and product appearances to make smart recommendations. 
 
 
 ### Background
-Recommendation Systems have been a well-researched topic for years, and have been created to deal with vision, language, or tabular data. The fashion field has been shaped by these data types to create recommendation systems. The obvious approach would be image-centric. This entails incorporating color, shape, and other visual cues to either recommend similar clothing or complementary pieces of fashion to a given product via Neural Networks [1,2]. Another popular technique utilizes NLP (Natural Language Processing) to help identify, cluster, and recommend clothing based on the names and descriptions on various products [3]. Other sources have worked with multi-label classification for clothing or data from professional stylists to better recommend specific clothing fashion to customers [4], but these diverge from our main focus.
+Recommendation systems using visual, linguistic, or tabular data are a well-researched area. The obvious approach would be image-centric. This entails incorporating color, shape, and other visual cues to either recommend similar clothing or complementary pieces of fashion to a given product via Neural Networks [1,2]. Another popular technique utilizes NLP (Natural Language Processing) to help identify, cluster, and recommend clothing based on the names and descriptions of various products [3]. Other sources have worked with multi-label classification for clothing or data from professional stylists to better recommend specific clothing fashion to customers [4], but these diverge from our main focus.
 
 ### Dataset Overview
-The dataset we plan to use is the H&M clothing purchase history dataset (https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/overview). The dataset has both text data of over 1 million logged clothing transactions, each attributed to a given ID representing a distinct person. The dataset also has metadata for clothing and images of each clothing item.
+The dataset we plan to use is the H&M clothing purchase history dataset (https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/overview). The dataset has over 1 million logged clothing transactions, each attributed to a given ID representing a distinct person. The dataset also has metadata for clothing and images of each clothing item.
 
 ## Problem Statement
 
 ### Motivation
-The motivation of our project was to bring the recommendation system algorithms, which have pervaded our media world, to an area of shopping that is highly personal and varied: clothes shopping. A secondary motivation was to go beyond simple analysis of purchasing data and use data intrinsic to the clothing data and user data to provide recommendations that target particular features of the user itself.
+The motivation of our project is to bring recommendation system algorithms to an area of shopping that is highly personal and varied: clothes shopping. A secondary motivation was to go beyond simple analysis of purchasing data and use data intrinsic to the clothing and users to provide recommendations that target the user's specific features.
 
 ### Our Problems
 
 Our problem is twofold. 
 1. Measure the similarity between two arbitrary pieces of clothing and use this measurement to construct groupings of similar clothings. 
-2. Construct a recommender system that will recommend clothing based on their purchase history. 
+2. Construct a recommender system that will recommend clothing based on a user's purchase history. 
 
 ## Intended Methods
 Each of the two subproblems within our overall problem has distinct approaches.
@@ -34,7 +34,7 @@ We plan to measure clothing similarity by applying a clustering algorithm over t
 To create the clothing recommender system, we plan to test a variety of popular approaches. The two front-runners for our recommender system so far are an artificial neural network, and a support vector machine. 
 
 ## Potential Results
-For the clustering part of the project, it is likely that clothing with similar colors will be grouped. This is the most obvious way for the algorithm to perform. We can shift the focus away from color by converting images to grayscale so that we can see groupings based on clothing type, such as shirt/pants/shorts. The recommendation system should be able to take in a customer's purchase history of clothing and recommend items for them to purchase, ideally based not just on similarity but on learned attributes about what might fit well with prior purchases and what the customer might like. 
+For the clustering part of the project, it is likely that clothing with similar colors will be grouped. This is the most obvious way for the algorithm to perform. We can shift the focus away from color by converting images to grayscale so that we can see groupings based on clothing type, such as shirt/pants/shorts. The recommendation system should be able to take in a customer's purchase history of clothing and recommend items for them to purchase based on similarity with prior purchases and potential matches. 
 
 ## References
 
