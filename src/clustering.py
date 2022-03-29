@@ -10,9 +10,10 @@ from sklearn.decomposition import PCA
 IMAGES_PATH = "data/images"
 
 class Clustering:
-    def __init__(self, K=5, num_clusters=8):
+    def __init__(self, K=5, num_clusters=8, analysis=0):
         self.K = K
         self.num_clusters = num_clusters
+        self.analysis = analysis
 
     def __rgb2gray(self, rgb):
         return np.dot(rgb[...,:3], [0.299, 0.587, 0.144])
@@ -39,6 +40,10 @@ class Clustering:
             pca_r = PCA(n_components=self.K)
             trans_pca_r = pca_r.fit_transform(df_red)
 
+            if (self.analysis == 1):
+                mean = (pca_r.explained_variance_ratio_ + pca_b.explained_variance_ratio_ + pca_g.explained_variance_ratio_) / 3
+                print(np.sum(mean))
+
             b_arr = pca_b.inverse_transform(trans_pca_b)
             g_arr = pca_g.inverse_transform(trans_pca_g)
             r_arr = pca_r.inverse_transform(trans_pca_r)
@@ -46,7 +51,8 @@ class Clustering:
             new_img = np.clip(cv2.merge((b_arr, g_arr, r_arr)), 0, 1)
 
             np.save(save_file_path, new_img)
-            print(f'Created compressed image for {path_to_file}')
+            if (self.analysis == 0):
+                print(f'Created compressed image for {path_to_file}')
         
         return np.load(save_file_path, encoding='bytes')
 
@@ -84,7 +90,7 @@ class Clustering:
 
         kmeans.fit(images)
 
-        return kmeans.labels_
+        return kmeans.labels_, kmeans.inertia_
     
     def cluster_images_agglomerate(self, u_subdir=""):
         all_images_path = os.path.join(IMAGES_PATH, u_subdir, "all_images.npy")
