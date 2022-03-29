@@ -4,7 +4,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 from clustering import Clustering
-from main import subdir
+
+subdir = "028" # change this
 
 labels = []
 var = []
@@ -35,11 +36,9 @@ def plot_variance_ratio():
 def KMeans_Optimal_Clusters():
     labels = []
     objective_values = []
-    for k in range(2, 11):
+    for k in range(2, 16):
         k_clustering = Clustering(num_clusters=k)
-
         _, inertia_k = k_clustering.cluster_images_kmeans(u_subdir=subdir)
-        print(inertia_k)
         labels.append(k)
         objective_values.append(inertia_k)
     
