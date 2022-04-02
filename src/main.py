@@ -9,13 +9,16 @@ from clustering import IMAGES_PATH, Clustering
 agg_clustering = Clustering(num_clusters=10)
 k_clustering = Clustering(K = 16, num_clusters=13)
 
-subdir = "030" # change this
+subdir = "022" # change this
 
 # Setup for KMeans
 labels_k, _, paths = k_clustering.cluster_images_kmeans(u_subdir=subdir)
 
 images = np.load(os.path.join(IMAGES_PATH, subdir, "all_images.npy"))
 images = images.reshape(len(images), 250, 250, 3)
+
+
+fig = plt.figure(figsize=(2, len(images)))
 
 # Setup for Agglomerate Clustering
 """
@@ -25,18 +28,18 @@ path = "results/data/cluster_results_" + subdir + ".csv"
 f = open(path, "w")
 k = 0
 for i in labels_k:
-    string = str(paths[k].split("/")[3]) + "," + str(i) + "\n"
+    string = str(paths[k].split("\\")[2]) + "," + str(i) + "\n" # change this for windows
+    #string = str(paths[k].split("/")[3]) + "," + str(i) + "\n"
     k = k + 1
     f.write(string)
 f.close()
 
 # Setup for Plot
-"""
-for img in images:
-    ax = fig.add_subplot(2, len(images), i + 1, xticks=[], yticks=[])
-    ax.imshow(img)
-    ax.set_title(f'{labels_a[i]}')
-    i += 1
-"""
 
-plt.show()
+# for i, img in enumerate(images):
+#     ax = fig.add_subplot(2, len(images), i + 1, xticks=[], yticks=[])
+#     ax.imshow(img)
+#     ax.set_title(f'{labels_k[i]}')
+#     i += 1
+
+# plt.show()
