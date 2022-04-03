@@ -6,7 +6,7 @@ import numpy as np
 
 from clustering import IMAGES_PATH, Clustering
 
-agg_clustering = Clustering(num_clusters=10)
+agg_clustering = Clustering(num_clusters=13)
 k_clustering = Clustering(K = 16, num_clusters=13)
 
 subdir = "052" # change this
@@ -36,13 +36,20 @@ for i in range(58, 90):
 # images = images.reshape(len(images), 250, 250, 3)
 
 
-
-
 # Setup for Agglomerate Clustering
 """
-labels_a = agg_clustering.cluster_images_agglomerate(u_subdir=subdir)
+labels_a, paths = agg_clustering.cluster_images_agglomerate(u_subdir=subdir)
 """
 
+path = "results/data/cluster_results_agg" + subdir + ".csv"
+f = open(path, "w")
+k = 0
+for i in labels_k:
+    string = str(paths[k].split("\\")[2]) + "," + str(i) + "\n" # this is for windows
+    #string = str(paths[k].split("/")[3]) + "," + str(i) + "\n" # this is for mac/linux
+    k = k + 1
+    f.write(string)
+f.close()
 
 # Setup for Plot
 #fig = plt.figure(figsize=(2, len(images)))

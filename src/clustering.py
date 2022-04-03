@@ -2,6 +2,7 @@ from operator import iadd
 import os
 
 import cv2
+from matplotlib import path
 import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.cluster import KMeans, AgglomerativeClustering
@@ -66,6 +67,16 @@ class Clustering:
             total_num_files += i
             all_images.append((imgs, subdir))
         return all_images, total_num_files, paths
+    
+    def __generate_paths(self, u_subdir=""):
+        paths = []
+        for subdir, dirs, files in os.walk(os.path.join(IMAGES_PATH, u_subdir)):
+            files = [ fi for fi in files if fi.endswith(".jpg") ]
+            for file in files:
+                path_to_file = os.path.join(subdir, file)
+                path = os.path.splitext(path_to_file)[0]
+                paths.append(path)
+        return paths
 
     def __compress_image_overwrite(self, subdir, file):
         path_to_file = os.path.join(subdir, file)
@@ -117,6 +128,7 @@ class Clustering:
             all_images.append((imgs, subdir))
         
         return all_images, total_num_files, (sum / total_num_files)
+    
 
     def cluster_images_kmeans(self, u_subdir=""):
         all_images_path = os.path.join(IMAGES_PATH, u_subdir, "all_images.npy")
@@ -154,13 +166,15 @@ class Clustering:
                 start = end
         
             np.save(all_images_path, all_images)
+        else:
+            paths = self.__generate_paths(u_subdir=u_subdir)
 
         images = np.load(all_images_path)
         c = AgglomerativeClustering(n_clusters=self.num_clusters, compute_distances=True)
 
         c.fit(images)
 
-        return c.labels_, c.distances_
+        return c.labels_, c.distances_, paths
 
     def cluster_images_varied_agglomerate(self, u_subdir="", distance_threshold=0.5):
         all_images_path = os.path.join(IMAGES_PATH, u_subdir, "all_images.npy")
