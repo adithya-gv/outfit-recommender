@@ -9,26 +9,26 @@ from clustering import IMAGES_PATH, Clustering
 agg_clustering = Clustering(num_clusters=13)
 k_clustering = Clustering(K = 16, num_clusters=13)
 
-subdir = "052" # change this
+subdir = "011" # change this
 
 
 # Note that folder 057 is not fully done to an error, will have to resolve later. Not sure if it was 
 # running out of RAM or that image just couldn't be clustered for some reason (0578382006)
 
 # Setup for KMeans (loops over multiple folders)
-for i in range(58, 90):
-    subdir = "0" + str(i)
-    labels_k, _, paths = k_clustering.cluster_images_kmeans(u_subdir=subdir)
+# for i in range(58, 90):
+#     subdir = "0" + str(i)
+#     labels_k, _, paths = k_clustering.cluster_images_kmeans(u_subdir=subdir)
 
-    path = "results/data/cluster_results_" + subdir + ".csv"
-    f = open(path, "w")
-    k = 0
-    for i in labels_k:
-        string = str(paths[k].split("\\")[2]) + "," + str(i) + "\n" # this for windows
-        #string = str(paths[k].split("/")[3]) + "," + str(i) + "\n" # this for mac/linux
-        k = k + 1
-        f.write(string)
-    f.close()
+#     path = "results/data/cluster_results_" + subdir + ".csv"
+#     f = open(path, "w")
+#     k = 0
+#     for i in labels_k:
+#         string = str(paths[k].split("\\")[2]) + "," + str(i) + "\n" # this for windows
+#         #string = str(paths[k].split("/")[3]) + "," + str(i) + "\n" # this for mac/linux
+#         k = k + 1
+#         f.write(string)
+#     f.close()
 
 
 
@@ -37,19 +37,26 @@ for i in range(58, 90):
 
 
 # Setup for Agglomerate Clustering
-"""
-labels_a, paths = agg_clustering.cluster_images_agglomerate(u_subdir=subdir)
-"""
 
-path = "results/data/cluster_results_" + "agg_" + subdir + ".csv" # remove the "agg_" if you want to use the KMeans results.
-f = open(path, "w")
-k = 0
-for i in labels_k:
-    string = str(paths[k].split("\\")[2]) + "," + str(i) + "\n" # this is for windows
-    #string = str(paths[k].split("/")[3]) + "," + str(i) + "\n" # this is for mac/linux
-    k = k + 1
-    f.write(string)
-f.close()
+labels_a, paths = agg_clustering.cluster_images_agglomerate(u_subdir=subdir)
+
+
+for i in range(58, 65):
+    subdir = "0" + str(i)
+    if subdir != "013" and subdir != "016":
+        labels_a, paths = agg_clustering.cluster_images_agglomerate(u_subdir=subdir)
+
+        path = "results/data/cluster_results_" + "agg_" + subdir + ".csv"
+        f = open(path, "w")
+        k = 0
+        for i in labels_a:
+            string = str(paths[k].split("\\")[2]) + "," + str(i) + "\n" # this for windows
+            #string = str(paths[k].split("/")[3]) + "," + str(i) + "\n" # this for mac/linux
+            k = k + 1
+            f.write(string)
+        f.close()
+        print("clustered images in folder " + subdir)
+
 
 # Setup for Plot
 #fig = plt.figure(figsize=(2, len(images)))

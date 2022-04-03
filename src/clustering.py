@@ -174,7 +174,7 @@ class Clustering:
 
         c.fit(images)
 
-        return c.labels_, c.distances_, paths
+        return c.labels_, paths
 
     def cluster_images_varied_agglomerate(self, u_subdir="", distance_threshold=0.5):
         all_images_path = os.path.join(IMAGES_PATH, u_subdir, "all_images.npy")
