@@ -41,7 +41,7 @@ for i in range(58, 90):
 labels_a, paths = agg_clustering.cluster_images_agglomerate(u_subdir=subdir)
 """
 
-path = "results/data/cluster_results_agg" + subdir + ".csv"
+path = "results/data/cluster_results_" + "agg_" + subdir + ".csv" # remove the "agg_" if you want to use the KMeans results.
 f = open(path, "w")
 k = 0
 for i in labels_k:
