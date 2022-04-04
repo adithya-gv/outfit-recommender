@@ -1,3 +1,4 @@
+
 # Outfit Recommender
 Group 40's CS 4641 Project: a clothing recommendation system.
 
@@ -15,7 +16,7 @@ Clothing shopping is a frequent occurrence, yet it remains a difficult and perso
 Recommendation systems using visual, linguistic, or tabular data are a well-researched area. The popular approach is image-centric. This entails incorporating color, shape, and other visual cues to recommend either similar clothing or complementary pieces of fashion to a given product via Neural Networks [1,2]. Another popular technique utilizes NLP (Natural Language Processing) to help identify, cluster, and recommend clothing based on the names and descriptions of various products [3]. Other sources have worked with multi-label classification for clothing or data from professional stylists to better recommend specific clothing fashion to customers [4], but these diverge from our main focus.
 
 ### Dataset Overview
-The dataset we plan to use is the H&M clothing purchase history dataset (https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/overview). The dataset has over 1 million logged clothing transactions, each attributed to a given ID representing a distinct person. The dataset also has metadata for clothing and images of each clothing item.
+The dataset we plan to use is the H&M clothing purchase history dataset (https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/overview). The dataset has over 1 million logged clothing transactions, each attributed to a given ID representing a distinct person. The dataset also has metadata for clothing and images of each clothing item. However, the dataset is extremely large and it would not be viable to run all of our models on the entirety of the data due to our computation limitations. Because of this, we have limited the dataset to around the first 30,000 of the 100,000 images of clothing. 
 
 ## Problem Statement
 
@@ -32,13 +33,18 @@ Our problem is twofold.
 Each of the two subproblems within our overall problem has distinct approaches.
 
 ### Clothing Similarity
-We plan to measure clothing similarity by applying a clustering algorithm over the features of each clothing item. We plan to apply a variety of clustering algorithms, ranging from K-Means to DBSCAN, to see which captures the shape of the data the best.
+First, we collected around 30,000 images from the dataset. Because images have vastly more features than we have computational power to process through, we used PCA to compress the images. We determined the number of features by choosing the minimal number of features needed to have 90% of recovered variance. We do this twice: once in grayscale and once in RGB. We measured clothing similarity by applying a clustering algorithm over the features of each clothing item. We applied two clustering algorithms, K-Means and agglomerative, to see which captures the shape of the data the best. Lastly, we used elbow method on K-means to determine the optimal number of clusters. The accuracy of these clusters is verified by manual inspection on a test demo set of 100 images. 
 
 ### Recommender System
 To create the clothing recommender system, we plan to test a variety of popular approaches. The two front-runners for our recommender system so far are an artificial neural network, and a support vector machine. 
 
-## Potential Results
-For the clustering part of the project, it is likely that clothing with similar colors will be grouped. This is the most obvious way for the algorithm to perform. We can shift the focus away from color by converting images to grayscale so that we can see groupings based on clothing type, such as shirt/pants/shorts. The recommendation system should be able to take in a customer's purchase history of clothing and recommend items for them to purchase based on similarity with prior purchases and potential matches. 
+## Results and Discussion
+For the clustering part of the project, PCA was run on both RGB and grayscale images on around 30,000 images. The PCA image compression on RGB images resulted in 16 features used from the image to recover 90% accuracy, as shown Figure 1.
+
+[Figure 1](https://github.com/adithya-gv/outfit-recommender/blob/main/results/Recovered_Variance_Ratio.png)
+
+## Potential Results and Discussion
+The recommendation system should be able to take in a customer's purchase history of clothing and recommend items for them to purchase based on similarity with prior purchases and potential matches. 
 
 ## References
 
