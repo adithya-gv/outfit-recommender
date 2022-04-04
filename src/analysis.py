@@ -2,6 +2,7 @@ import os
 
 import matplotlib.pyplot as plt
 import numpy as np
+import sklearn.metrics as skm
 
 from clustering import Clustering
 
@@ -46,6 +47,17 @@ def KMeans_Optimal_Clusters(grayscale = False):
     plt.xlabel('Clusters Used')
     plt.ylabel('Inertia')
     plt.show()
+
+def Compute_DaviesBouldinIndex():
+    clustering = Clustering(K=16, num_clusters=13)
+    images = clustering.get_dataset()
+    labels_k, _ = clustering.cluster_images_kmeans(u_subdir=subdir)
+    labels_a, _ = clustering.cluster_images_agglomerate(u_subdir=subdir)
+
+    db_k = skm.davies_bouldin_score(images, labels_k)
+    db_a = skm.davies_bouldin_score(images, labels_a)
+    print(db_k)
+    print(db_a)
 
 ## Function to Run
 KMeans_Optimal_Clusters(grayscale = True)

@@ -236,3 +236,22 @@ class Clustering:
         c.fit(images)
 
         return c.labels_, c.n_clusters_
+    
+    def get_dataset(self, u_subdir="", distance_threshold=0.5):
+        all_images_path = os.path.join(IMAGES_PATH, u_subdir, "all_images.npy")
+        if not os.path.exists(all_images_path):
+            original_images, total_num_images = self.__generate_images(u_subdir=u_subdir)
+
+            all_images = np.zeros((total_num_images, 1000 * 1000 * 3))
+
+            start = 0
+            for image_subdir, subdir in original_images:
+                end = start + len(image_subdir)
+                all_images[start:end] = image_subdir.reshape(len(image_subdir), -1)
+                start = end
+        
+            np.save(all_images_path, all_images)
+
+        images = np.load(all_images_path)
+        
+        return images
