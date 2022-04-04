@@ -41,7 +41,7 @@ To create the clothing recommender system, we plan to test a variety of popular 
 ## Results and Discussion
 For the clustering part of the project, PCA was run on both RGB and grayscale images on around 30,000 images. The PCA image compression on RGB images resulted in 16 features used from the image to recover 90% accuracy, as shown Figure 1.
 
-!"Figure 1"(https://github.com/adithya-gv/outfit-recommender/tree/main/results/Recovered_Variance_Ratio?raw=true)
+!Figure 1(https://github.com/adithya-gv/outfit-recommender/tree/main/results/Recovered_Variance_Ratio?raw=true)
 
 ## Potential Results and Discussion
 The recommendation system should be able to take in a customer's purchase history of clothing and recommend items for them to purchase based on similarity with prior purchases and potential matches. 
