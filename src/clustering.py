@@ -17,7 +17,8 @@ class Clustering:
         self.analysis = analysis
 
     def __rgb2gray(self, rgb):
-        return np.dot(rgb[...,:3], [0.299, 0.587, 0.144])
+        #return np.dot(rgb[...,:3], [0.299, 0.587, 0.144])
+        return cv2.cvtColor(rgb, cv2.COLOR_BGR2GRAY)
 
     def __compress_image(self, subdir, file):
         path_to_file = os.path.join(subdir, file)
@@ -52,13 +53,16 @@ class Clustering:
         
         return np.load(save_file_path, encoding='bytes'), os.path.splitext(path_to_file)[0]
 
-    def __generate_images(self, u_subdir=""):
+    def __generate_images(self, u_subdir="", grayscale = False):
         all_images = []
         paths = []
         total_num_files = 0
         for subdir, dirs, files in os.walk(os.path.join(IMAGES_PATH, u_subdir)):
             files = [ fi for fi in files if fi.endswith(".jpg") ]
-            imgs = np.zeros((len(files), 250, 250, 3))
+            if grayscale:
+                imgs = np.zeros((len(files), 250, 250))
+            else:
+                imgs = np.zeros((len(files), 250, 250, 3))
             i = 0
             for file in files:
                 imgs[i, ...], path = self.__compress_image(subdir, file)
@@ -112,16 +116,45 @@ class Clustering:
         np.save(save_file_path, new_img)        
         return np.load(save_file_path, encoding='bytes'), mean
 
-    def generate_images_overwrite(self, u_subdir=""):
+
+    def __compress_image_grayscale_overwrite(self, subdir, file):
+        path_to_file = os.path.join(subdir, file)
+        save_file_path = os.path.splitext(path_to_file)[0] + ".npy"
+
+        img = cv2.cvtColor(cv2.imread(path_to_file), cv2.COLOR_BGR2RGB)
+        img = cv2.resize(img, (250, 250))
+        img = self.__rgb2gray(img)
+
+        pca = PCA(n_components=self.K)
+        trans_pca = pca.fit_transform(img)
+
+        if (self.analysis == 1):
+            mean = pca.explained_variance_ratio_
+            mean = np.sum(mean)
+
+        inverse_transform = pca.inverse_transform(trans_pca)
+
+        new_img = np.clip(inverse_transform, 0, 1)
+
+        np.save(save_file_path, new_img)        
+        return np.load(save_file_path, encoding='bytes'), mean
+
+    def generate_images_overwrite(self, u_subdir="", grayscale = False):
         all_images = []
         total_num_files = 0
         sum = 0.0
         for subdir, dirs, files in os.walk(os.path.join(IMAGES_PATH, u_subdir)):
             files = [ fi for fi in files if fi.endswith(".jpg") ]
-            imgs = np.zeros((len(files), 250, 250, 3))
+            if grayscale:
+                imgs = np.zeros((len(files), 250, 250))
+            else:
+                imgs = np.zeros((len(files), 250, 250, 3))
             i = 0
             for file in files:
-                imgs[i, ...], mean = self.__compress_image_overwrite(subdir, file)
+                if grayscale:
+                    imgs[i, ...], mean = self.__compress_image_grayscale_overwrite(subdir, file)
+                else:
+                    imgs[i, ...], mean = self.__compress_image_overwrite(subdir, file)
                 sum = sum + mean
                 i += 1
             total_num_files += i
@@ -130,12 +163,16 @@ class Clustering:
         return all_images, total_num_files, (sum / total_num_files)
     
 
-    def cluster_images_kmeans(self, u_subdir=""):
+    def cluster_images_kmeans(self, u_subdir="", grayscale = False):
         all_images_path = os.path.join(IMAGES_PATH, u_subdir, "all_images.npy")
         if not os.path.exists(all_images_path):
-            original_images, total_num_images, paths = self.__generate_images(u_subdir=u_subdir)
-
-            all_images = np.zeros((total_num_images, 250 * 250 * 3))
+            print("generating images again")
+            original_images, total_num_images, paths = self.__generate_images(u_subdir=u_subdir, grayscale = grayscale)  
+            if grayscale:
+                all_images = np.zeros((total_num_images, 250 * 250))
+            else:
+                all_images = np.zeros((total_num_images, 250 * 250 * 3))
+                
 
             start = 0
             for image_subdir, subdir in original_images:
@@ -144,6 +181,8 @@ class Clustering:
                 start = end
 
             np.save(all_images_path, all_images)
+        else:
+            paths = 0
 
         images = np.load(all_images_path)
         kmeans = KMeans(n_clusters=self.num_clusters)

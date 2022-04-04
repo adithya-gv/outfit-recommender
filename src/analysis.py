@@ -5,13 +5,13 @@ import numpy as np
 
 from clustering import Clustering
 
-subdir = "094" # change this
+subdir = "094_grayscale" # change this
 
 labels = []
 var = []
 
 # KMeans PCA Analysis  
-def KMeans_PCA_Variance_Ratio():
+def KMeans_PCA_Variance_Ratio(grayscale=False):
     labels = []
     var = []
     mean = 0
@@ -19,8 +19,7 @@ def KMeans_PCA_Variance_Ratio():
     while mean < 0.91:
         print("Running KMeans with PCA image compression using", k, "components.")
         k_clustering = Clustering(K=k, analysis=1)
-
-        _, _, mean = k_clustering.generate_images_overwrite(u_subdir=subdir)
+        _, _, mean = k_clustering.generate_images_overwrite(u_subdir=subdir, grayscale=grayscale)
         print(mean)
         labels.append(k)
         k = k + 1
@@ -32,13 +31,13 @@ def KMeans_PCA_Variance_Ratio():
     plt.ylabel('Recovered Variance Ratio')
     plt.show()
 
-def KMeans_Optimal_Clusters():
+def KMeans_Optimal_Clusters(grayscale = False):
     labels = []
     objective_values = []
     for k in range(2, 25):
         print(k)
         k_clustering = Clustering(K=16, num_clusters=k)
-        _, inertia_k = k_clustering.cluster_images_kmeans(u_subdir=subdir)
+        _, inertia_k, _ = k_clustering.cluster_images_kmeans(u_subdir=subdir, grayscale = grayscale)
         labels.append(k)
         objective_values.append(inertia_k)
     
@@ -49,4 +48,4 @@ def KMeans_Optimal_Clusters():
     plt.show()
 
 ## Function to Run
-KMeans_Optimal_Clusters()
+KMeans_Optimal_Clusters(grayscale = True)
