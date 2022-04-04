@@ -39,9 +39,15 @@ First, we collected around 30,000 images from the dataset. Because images have v
 To create the clothing recommender system, we plan to test a variety of popular approaches. The two front-runners for our recommender system so far are an artificial neural network, and a support vector machine. 
 
 ## Results and Discussion
-For the clustering part of the project, PCA was run on both RGB and grayscale images on around 30,000 images. The PCA image compression on RGB images resulted in 16 features used from the image to recover 90% accuracy, as shown Figure 1.
+For the clustering part of the project, PCA was run on both RGB and grayscale images on around 30,000 images. The PCA image compression on RGB images resulted in 16 features used from the image to recover 90% accuracy, as shown in Figure 1.
 
 [Figure 1](https://github.com/adithya-gv/outfit-recommender/blob/main/results/Recovered_Variance_Ratio.png)
+
+The PCA image compression on grayscale images also resulted in 16 features used from the image to recover at least 90% variance, as shown in Figure 2.
+
+K means was run on 200 RGB images in order to generate a graph of inertia versus cluster count, as shown below. K means with 13 clusters was then run for RGB images. Agglomerative clustering was also run with 13 clusters and 16 featues for images. [Insert comparison with some metric]
+
+K means was run on 200 grayscale images in order to generate a graph of inertia versus cluster count, as shown below. K means with 15 clusters was then run for RGB images. The number of clusters may be higher because the features take into account the shape of the article of clothing more in PCA when the image is grayscale versus when the image is in RGB. The RGB clusters may have more similarity in color, but the grayscale may have more similarity in shape.
 
 ## Potential Results and Discussion
 The recommendation system should be able to take in a customer's purchase history of clothing and recommend items for them to purchase based on similarity with prior purchases and potential matches. 
