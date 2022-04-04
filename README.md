@@ -41,11 +41,11 @@ To create the clothing recommender system, we plan to test a variety of popular 
 ## Results and Discussion
 For the clustering part of the project, PCA was run on both RGB and grayscale images on around 30,000 images. The PCA image compression on RGB images resulted in 16 features used from the image to recover 90% accuracy, as shown in Figure 1.
 
-<img src="https://github.com/adithya-gv/outfit-recommender/blob/main/results/Recovered_Variance_Ratio.png" width=500>
+![Figure 1](docs/assets/Recovered_Variance_Ratio.png)
 
 The PCA image compression on grayscale images also resulted in 16 features used from the image to recover at least 90% variance, as shown in Figure 2.
 
-<img src="https://github.com/adithya-gv/outfit-recommender/blob/main/results/Recovered_Variance_Ratio_Grayscale.png" width=500>
+![Figure 2](docs/assets/Recovered_Variance_Ratio_Grayscale.png)
 
 K means was run on 200 RGB images in order to generate a graph of inertia versus cluster count, as shown below. K means with 13 clusters was then run for RGB images. Agglomerative clustering was also run with 13 clusters and 16 featues for images. [Insert comparison with some metric]
 
