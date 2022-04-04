@@ -163,7 +163,7 @@ class Clustering:
         return all_images, total_num_files, (sum / total_num_files)
     
 
-    def cluster_images_kmeans(self, u_subdir="", grayscale = False):
+    def cluster_images_kmeans(self, u_subdir="", grayscale=False):
         all_images_path = os.path.join(IMAGES_PATH, u_subdir, "all_images.npy")
         if not os.path.exists(all_images_path):
             print("generating images again")
@@ -220,7 +220,7 @@ class Clustering:
         if not os.path.exists(all_images_path):
             original_images, total_num_images = self.__generate_images(u_subdir=u_subdir)
 
-            all_images = np.zeros((total_num_images, 1000 * 1000 * 3))
+            all_images = np.zeros((total_num_images, 250 * 250 * 3))
 
             start = 0
             for image_subdir, subdir in original_images:
@@ -237,21 +237,28 @@ class Clustering:
 
         return c.labels_, c.n_clusters_
     
-    def get_dataset(self, u_subdir="", distance_threshold=0.5):
+    def cluster_images_kmeans_dataset(self, u_subdir="", grayscale=False):
         all_images_path = os.path.join(IMAGES_PATH, u_subdir, "all_images.npy")
         if not os.path.exists(all_images_path):
-            original_images, total_num_images = self.__generate_images(u_subdir=u_subdir)
-
-            all_images = np.zeros((total_num_images, 1000 * 1000 * 3))
+            print("generating images again")
+            original_images, total_num_images, paths = self.__generate_images(u_subdir=u_subdir, grayscale = grayscale)  
+            if grayscale:
+                all_images = np.zeros((total_num_images, 250 * 250))
+            else:
+                all_images = np.zeros((total_num_images, 250 * 250 * 3))
+                
 
             start = 0
             for image_subdir, subdir in original_images:
                 end = start + len(image_subdir)
                 all_images[start:end] = image_subdir.reshape(len(image_subdir), -1)
                 start = end
-        
+
             np.save(all_images_path, all_images)
 
         images = np.load(all_images_path)
-        
-        return images
+        kmeans = KMeans(n_clusters=self.num_clusters)
+
+        kmeans.fit(images)
+
+        return kmeans.labels_, kmeans.inertia_, images
