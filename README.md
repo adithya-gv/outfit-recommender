@@ -33,7 +33,12 @@ Our problem is twofold.
 Each of the two subproblems within our overall problem has distinct approaches.
 
 ### Clothing Similarity
-First, we collected around 30,000 images from the dataset. Because images have vastly more features than we have computational power to process through, we used PCA to compress the images. We determined the number of features by choosing the minimal number of features needed to have 90% of recovered variance. We do this twice: once in grayscale and once in RGB. We measured clothing similarity by applying a clustering algorithm over the features of each clothing item. We applied two clustering algorithms, K-Means and agglomerative, to see which captures the shape of the data the best. Lastly, we used elbow method on K-means to determine the optimal number of clusters. The accuracy of these clusters is verified by manual inspection on a test demo set of 100 images. 
+First, we collected around 30,000 images from the dataset. Because images have vastly more features than we have computational power to process through, we used PCA to compress the images. We determined the number of features by choosing the minimal number of features needed to have 90% of recovered variance. We do this twice: once in grayscale and once in RGB. We measured clothing similarity by applying a clustering algorithm over the features of each clothing item. We applied two clustering algorithms, K-Means Clustering and Agglomerative Clustering, to see which captures the shape of the data the best. 
+
+First, we used the Elbow method on K-means to determine the optimal number of clusters. We used the distortion score (or Inertia, as Scikit Learn calls it) to evaluate the elbow.
+
+Next, to evaluate which metric was better, we used two Clustering Evaluation Techniques, the Davies-Bouldin Index and Sillhouette Score. We ran each clustering algorithm 10 times on the same dataset to determine average values for each.
+
 
 ### Recommender System
 To create the clothing recommender system, we plan to test a variety of popular approaches. The two front-runners for our recommender system so far are an artificial neural network, and a support vector machine. 
@@ -47,9 +52,24 @@ The PCA image compression on grayscale images also resulted in 16 features used 
 
 ![Figure 2](docs/assets/Recovered_Variance_Ratio_Grayscale.png)
 
-K means was run on 200 RGB images in order to generate a graph of inertia versus cluster count, as shown below. K means with 13 clusters was then run for RGB images. Agglomerative clustering was also run with 13 clusters and 16 featues for images. [Insert comparison with some metric]
+K-means was run on 200 RGB images in order to generate a graph of inertia versus cluster count, as shown below. 
 
-K means was run on 200 grayscale images in order to generate a graph of inertia versus cluster count, as shown below. K means with 15 clusters was then run for RGB images. The number of clusters may be higher because the features take into account the shape of the article of clothing more in PCA when the image is grayscale versus when the image is in RGB. The RGB clusters may have more similarity in color, but the grayscale may have more similarity in shape.
+![Figure 3](docs/assets/Elbow_Curve.png)
+
+Based on the elbow curve, we decided to use 13 clusters as our optimal cluster count.
+
+K-means with 13 clusters was then run for RGB images to generate labels for each datapoint. Agglomerative clustering was also run with 13 clusters and 16 features for images to generate equivalent labels.
+
+K-means was then run on 200 grayscale images in order to generate a graph of inertia versus cluster count, as shown below. 
+
+![Figure 4](docs/assets/Elbow_Curve_Grayscale.png)
+
+K-means with 15 clusters was then run for RGB images. The number of clusters may be higher because the features take into account the shape of the article of clothing more in PCA when the image is grayscale versus when the image is in RGB. The RGB clusters may have more similarity in color, but the grayscale may have more similarity in shape.
+
+Finally, when picking between K-Means Clustering and Agglomerative Clustering, we compared the Davies-Bouldin Index and Sillhouette Scores for both algorithms.
+For K-Means, we recieved an average Davies-Bouldin Index of 1.61, and an average Sillhouette Score of 0.21. 
+For Agglomerative Clustering, we recieved an average Davies-Bouldin Index of 1.54, and an average Sillhouette Score of 0.26.
+Therefore, we decided to use Agglomerative Clustering's labels for its superior performance in both metrics (lower Davies-Bouldin Index and higher Sillhouette Score), as well as its extremely low run-to-run variance. 
 
 ## Potential Results and Discussion
 The recommendation system should be able to take in a customer's purchase history of clothing and recommend items for them to purchase based on similarity with prior purchases and potential matches. 
