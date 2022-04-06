@@ -6,7 +6,7 @@ import numpy as np
 
 from clustering import IMAGES_PATH, Clustering
 
-agg_clustering = Clustering(K = 16, num_clusters=15)
+agg_clustering = Clustering(K = 16, num_clusters=15) #15 clusters for grayscale
 k_clustering = Clustering(K = 16, num_clusters=13)
 
 subdir = "011" # change this

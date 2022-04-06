@@ -64,15 +64,14 @@ K-means was then run on 200 grayscale images in order to generate a graph of ine
 
 ![Figure 4](docs/assets/Elbow_Curve_Grayscale.png)
 
-K-means with 15 clusters was then run for RGB images. The number of clusters may be higher because the features take into account the shape of the article of clothing more in PCA when the image is grayscale versus when the image is in RGB. The RGB clusters may have more similarity in color, but the grayscale may have more similarity in shape.
+We then ran agglomerative and K-means with 15 clusters on all the grayscale images. The number of clusters may be higher because the features take into account the shape of the article of clothing more in PCA when the image is grayscale versus when the image is in RGB. The RGB clusters may have more similarity in color, but the grayscale may have more similarity in shape.
 
 Finally, when picking between K-Means Clustering and Agglomerative Clustering, we compared the Davies-Bouldin Index and Sillhouette Scores for both algorithms.
 For K-Means, we recieved an average Davies-Bouldin Index of 1.61, and an average Sillhouette Score of 0.21. 
 For Agglomerative Clustering, we recieved an average Davies-Bouldin Index of 1.54, and an average Sillhouette Score of 0.26.
 Therefore, we decided to use Agglomerative Clustering's labels for its superior performance in both metrics (lower Davies-Bouldin Index and higher Sillhouette Score), as well as its extremely low run-to-run variance. 
 
-## Potential Results and Discussion
-The recommendation system should be able to take in a customer's purchase history of clothing and recommend items for them to purchase based on similarity with prior purchases and potential matches. 
+The clustering results can be seen in the results/data folder, which contains many .csv files. Each one contains the results of the clustering for that folder (as the images were all split into many folders). Note that we ran the clustering algorithm independently on each folder, as clustering 30,000 images at once is computationally infeasible. As a consequence of this, the clusters in each folder may represent different things. However, we can easily resolve this when feeding into the neural network because the data/articles.csv file contains a description of each image and its id. So we can map the description to each image and combine the clustering in this way. 
 
 ## References
 
