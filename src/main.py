@@ -6,7 +6,7 @@ import numpy as np
 
 from clustering import IMAGES_PATH, Clustering
 
-agg_clustering = Clustering(num_clusters=13)
+agg_clustering = Clustering(K = 16, num_clusters=15)
 k_clustering = Clustering(K = 16, num_clusters=13)
 
 subdir = "011" # change this
@@ -38,15 +38,15 @@ subdir = "011" # change this
 
 # Setup for Agglomerate Clustering
 
-labels_a, paths = agg_clustering.cluster_images_agglomerate(u_subdir=subdir)
+# labels_a, paths = agg_clustering.cluster_images_agglomerate(u_subdir=subdir, grayscale = True)
 
 
-for i in range(58, 65):
-    subdir = "0" + str(i)
-    if subdir != "013" and subdir != "016":
-        labels_a, paths = agg_clustering.cluster_images_agglomerate(u_subdir=subdir)
+for i in range(14, 65):
+    subdir = "0" + str(i) + "_grayscale"
+    if subdir != "013_grayscale" and subdir != "016_grayscale": # these folders don't have enough images to cluster
+        labels_a, paths = agg_clustering.cluster_images_agglomerate(u_subdir=subdir, grayscale = True)
 
-        path = "results/data/cluster_results_" + "agg_" + subdir + ".csv"
+        path = "results/data/cluster_results_" + "grayscale_" + subdir + ".csv"
         f = open(path, "w")
         k = 0
         for i in labels_a:

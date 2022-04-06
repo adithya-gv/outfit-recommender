@@ -191,12 +191,15 @@ class Clustering:
 
         return kmeans.labels_, kmeans.inertia_, paths
     
-    def cluster_images_agglomerate(self, u_subdir=""):
+    def cluster_images_agglomerate(self, u_subdir="", grayscale = False):
         all_images_path = os.path.join(IMAGES_PATH, u_subdir, "all_images.npy")
         if not os.path.exists(all_images_path):
-            original_images, total_num_images = self.__generate_images(u_subdir=u_subdir)
+            original_images, total_num_images = self.__generate_images(u_subdir=u_subdir, grayscale = grayscale)
 
-            all_images = np.zeros((total_num_images, 250 * 250 * 3))
+            if grayscale:
+                all_images = np.zeros((total_num_images, 250 * 250))
+            else:
+                all_images = np.zeros((total_num_images, 250 * 250 * 3))
 
             start = 0
             for image_subdir, subdir in original_images:
