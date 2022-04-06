@@ -49,7 +49,7 @@ Next, to evaluate which metric was better, we used two Clustering Evaluation Tec
 To create the clothing recommender system, we plan to test a variety of popular approaches. The two front-runners for our recommender system so far are an artificial neural network, and a support vector machine. 
 
 ## Results and Discussion: Similarity Clustering
-For the clustering part of the project, PCA was run on both RGB and grayscale images on around 30,000 images. The PCA image compression on RGB images resulted in 16 features used from the image to recover 90% accuracy, as shown in Figure 1.
+For the clustering part of the project, we first performed some data cleaning and pre-processingto make our downstream task easier to manage and faster overall. We first compressed/resized all our images to a smaller resolution of (250,250) before performing any operations on the images. PCA was next run on both RGB and grayscale images on around 30,000 images. The PCA image compression on RGB images resulted in 16 features used from the image to recover 90% accuracy, as shown in Figure 1.
 
 ![Figure 1](docs/assets/Recovered_Variance_Ratio.png)
 
@@ -79,7 +79,7 @@ For Agglomerative Clustering, we recieved an average Davies-Bouldin Index of 1.5
 
 Therefore, we decided to use Agglomerative Clustering's labels for its superior performance in both metrics (lower Davies-Bouldin Index and higher Sillhouette Score), as well as its extremely low run-to-run variance. 
 
-The clustering results can be seen in the results/data folder, which contains many .csv files, each of which contains the results of the clustering for that folder (as the images were all split into many folders). Note that we ran the clustering algorithm independently on each folder, as clustering 30,000 images at once is computationally infeasible. As a consequence of this, the clusters in each folder may represent different things. However, we can easily resolve this when feeding into the neural network because the data/articles.csv file contains a description of each image and its id. Therefore, we can map the description to each image and combine the clustering in this way. 
+The clustering results can be seen in the results/data folder, which contains many .csv files. Each one contains the results of the clustering for that folder (as the images were all split into many folders). Note that we ran the clustering algorithm independently on each folder, as clustering 30,000 images at once is computationally infeasible. As a consequence of this, the clusters in each folder may represent different things. However, we can easily resolve this when feeding into the neural network because the data/articles.csv file contains a description of each image and its id. So we can map the description to each image and combine the clustering in this way. 
 
 ## Potential Results: Recommender System (Supervised Learning)
 The recommendation system should be able to take in a customer's purchase history of clothing and recommend items for them to purchase based on similarity with prior purchases and potential matches. 
