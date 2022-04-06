@@ -81,6 +81,17 @@ Therefore, we decided to use Agglomerative Clustering's labels for its superior 
 
 The clustering results can be seen in the results/data folder, which contains many .csv files. Each one contains the results of the clustering for that folder (as the images were all split into many folders). Note that we ran the clustering algorithm independently on each folder, as clustering 30,000 images at once is computationally infeasible. As a consequence of this, the clusters in each folder may represent different things. However, we can easily resolve this when feeding into the neural network because the data/articles.csv file contains a description of each image and its id. So we can map the description to each image and combine the clustering in this way. 
 
+In addition to the csv files we have generated, we have created a script to generate examples of what the images in each cluster looks like. By simply running the src/cluster_visual_csv.py script,  a new folder at results/visuals will be created that will contain a pdf of the images in each cluster given a specified subdirectory and clustering method (kmeans or agglomerative). Some examples can be seen below in Figure 5 and 6.
+
+Cluster made by K-Means clustering algorithm:
+![Figure 5](docs/assets/KMeans_Clustering_visual.png)
+
+Cluster made by Agglomerative clustering algorithm:
+![Figure 6](docs/assets/Agglomerative_Clustering_visual.png)
+
+Overall, our visual observations match up with our reported statistics (Davies-Bouldin Index and Sillhouette Score) and support the notion that on average, Agglomerative Clustering does a better job at putting like-clothing together in a group. K-Means also does fairly well, but there are several situations where many unrelated clothing items are in a cluster together. 
+
+
 ## Potential Results: Recommender System (Supervised Learning)
 The recommendation system should be able to take in a customer's purchase history of clothing and recommend items for them to purchase based on similarity with prior purchases and potential matches. 
 
