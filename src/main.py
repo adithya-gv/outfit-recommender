@@ -9,7 +9,7 @@ from clustering import IMAGES_PATH, Clustering
 agg_clustering = Clustering(K = 16, num_clusters=15) #15 clusters for grayscale
 k_clustering = Clustering(K = 16, num_clusters=13)
 
-subdir = "011" # change this
+subdir = "000" # change this
 
 
 # Note that folder 057 is not fully done to an error, will have to resolve later. Not sure if it was 
@@ -38,9 +38,19 @@ subdir = "011" # change this
 
 # Setup for Agglomerate Clustering
 
-# labels_a, paths = agg_clustering.cluster_images_agglomerate(u_subdir=subdir, grayscale = True)
+labels_a, paths = agg_clustering.cluster_images_agglomerate(u_subdir=subdir)
+path = "results/data/batch_cluster_results.csv"
+f = open(path, "w")
+k = 0
+for i in labels_a:
+    print(paths[k].split("/")[3])
+    # string = str(paths[k].split("\\")[2]) + "," + str(i) + "\n" # this for windows
+    string = str(paths[k].split("/")[3]) + "," + str(i) + "\n" # this for mac/linux
+    k = k + 1
+    f.write(string)
+f.close()
 
-
+"""
 for i in range(14, 65):
     subdir = "0" + str(i) + "_grayscale"
     if subdir != "013_grayscale" and subdir != "016_grayscale": # these folders don't have enough images to cluster
@@ -50,13 +60,13 @@ for i in range(14, 65):
         f = open(path, "w")
         k = 0
         for i in labels_a:
-            string = str(paths[k].split("\\")[2]) + "," + str(i) + "\n" # this for windows
-            #string = str(paths[k].split("/")[3]) + "," + str(i) + "\n" # this for mac/linux
+            # string = str(paths[k].split("\\")[2]) + "," + str(i) + "\n" # this for windows
+            string = str(paths[k].split("/")[3]) + "," + str(i) + "\n" # this for mac/linux
             k = k + 1
             f.write(string)
         f.close()
         print("clustered images in folder " + subdir)
-
+"""
 
 # Setup for Plot
 #fig = plt.figure(figsize=(2, len(images)))

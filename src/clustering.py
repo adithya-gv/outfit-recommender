@@ -53,7 +53,7 @@ class Clustering:
         
         return np.load(save_file_path, encoding='bytes'), os.path.splitext(path_to_file)[0]
 
-    def __generate_images(self, u_subdir="", grayscale = False):
+    def __generate_images(self, u_subdir="", grayscale=False):
         all_images = []
         paths = []
         total_num_files = 0
@@ -167,7 +167,7 @@ class Clustering:
         all_images_path = os.path.join(IMAGES_PATH, u_subdir, "all_images.npy")
         if not os.path.exists(all_images_path):
             print("generating images again")
-            original_images, total_num_images, paths = self.__generate_images(u_subdir=u_subdir, grayscale = grayscale)  
+            original_images, total_num_images, paths = self.__generate_images(u_subdir=u_subdir, grayscale=grayscale)  
             if grayscale:
                 all_images = np.zeros((total_num_images, 250 * 250))
             else:
@@ -191,10 +191,10 @@ class Clustering:
 
         return kmeans.labels_, kmeans.inertia_, paths
     
-    def cluster_images_agglomerate(self, u_subdir="", grayscale = False):
+    def cluster_images_agglomerate(self, u_subdir="", grayscale=False):
         all_images_path = os.path.join(IMAGES_PATH, u_subdir, "all_images.npy")
         if not os.path.exists(all_images_path):
-            original_images, total_num_images = self.__generate_images(u_subdir=u_subdir, grayscale = grayscale)
+            original_images, total_num_images, paths = self.__generate_images(u_subdir=u_subdir, grayscale=grayscale)
 
             if grayscale:
                 all_images = np.zeros((total_num_images, 250 * 250))
