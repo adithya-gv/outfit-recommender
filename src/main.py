@@ -41,6 +41,7 @@ subdir = "000" # change this
 labels_a, paths = agg_clustering.cluster_images_agglomerate(u_subdir=subdir)
 path = "results/data/batch_cluster_results.csv"
 f = open(path, "w")
+f.write("image,cluster\n")
 k = 0
 for i in labels_a:
     print(paths[k].split("/")[3])

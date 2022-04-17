@@ -39,7 +39,6 @@ def postprocess():
     arr_0 = df.to_numpy()[:, 0]
     arr_1 = df.to_numpy()[:, 1]
     map = {}
-    map["044"] = [(8, 2)]
     for i in range(len(arr_0)):
         dir = str(arr_0[i])[0:2]
         path = "results/data/cluster_results_agg_0" + dir + ".csv"
@@ -73,6 +72,7 @@ def gen_new_map(map):
             old_cluster = df.to_numpy()[:, 1]
             new_path = "results/modified/0" + str(i) + ".csv"
             f = open(new_path, "w")
+            f.write("image,cluster\n")
             for i in range(len(img)):
                 oc = old_cluster[i]
                 nc = new_map[oc]
