@@ -76,7 +76,7 @@ def gen_new_map(map):
             for i in range(len(img)):
                 oc = old_cluster[i]
                 nc = new_map[oc]
-                f.write(str(img[i]) + "," + str(nc) + "\n")
+                f.write("0" + str(img[i]) + "," + str(nc) + "\n")
             f.close()
 
 
