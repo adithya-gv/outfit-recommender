@@ -2,7 +2,8 @@
 ######################
 .DS_Store
 .DS_Store?
-
+data/transactions_train.csv
+data/customer_samples/
 data/images/
 __pycache__/
 count.py
