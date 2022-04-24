@@ -3,8 +3,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import torch
  
-X = pd.read_csv("data/training/dataset.csv")[['graphical_appearance_no', 'colour_group_code']]
-y = pd.read_csv("data/training/dataset.csv")[['cluster']]
+X = pd.read_csv("data/training/dataset.csv")[['graphical_appearance_no', 'colour_group_code', 'cluster']] # you can add more features
+y = pd.read_csv("data/training/dataset.csv")[['purchased']] # modify this to your target variable
 X = X.to_numpy()
 y = y.to_numpy()
 
