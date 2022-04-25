@@ -22,7 +22,7 @@ class NeuralNetwork(torch.nn.Module):
         self.relu2 = torch.nn.LeakyReLU()
         self.linear3 = torch.nn.Linear(100, 50)
         self.relu4 = torch.nn.LeakyReLU()
-        self.linear5 = torch.nn.Linear(50, 13)
+        self.linear5 = torch.nn.Linear(50, 1)
         self.soft6 = torch.nn.Softmax(dim=0)
 
     def forward(self, x):
@@ -64,7 +64,7 @@ def test_loop(dataloader, model, loss_fn):
 
     test_loss /= num_batches
     correct /= size
-    print(f"Test Error: \n Accuracy: {(100*correct):>0.1f}%, Avg loss: {test_loss:>8f} \n")
+    print(f"Test Error: \nAccuracy: {(100*correct):>0.1f}%, Avg loss: {test_loss:>8f} \n")
 
 X = pd.read_csv("data/training/articles_subset.csv")[['product_type_no', 'graphical_appearance_no', 'colour_group_code', 'perceived_colour_value_id', 'perceived_colour_master_id', 'department_no', 'index_code', 'index_group_no', 'section_no', 'garment_group_no']] # you can add more features
 y = pd.read_csv("data/training/articles_subset.csv")[['cluster']] # modify this to your target variable
@@ -89,8 +89,6 @@ train_dataloader = DataLoader(dataset=train_data, batch_size=32, shuffle=True)
 test_dataloader = DataLoader(dataset=test_data, batch_size=32, shuffle=True)
 
 learning_rate = 1e-3
-batch_size = 64
-epochs = 5
 
 loss_fn = torch.nn.MSELoss()
 
@@ -99,7 +97,7 @@ model = NeuralNetwork()
 optimizer = torch.optim.SGD(model.parameters(), lr=learning_rate)
 
 
-epochs = 10
+epochs = 1
 for t in range(epochs):
     print(f"Epoch {t+1}\n-------------------------------")
     train_loop(train_dataloader, model, loss_fn, optimizer)
