@@ -8,7 +8,7 @@ from neural_net import NeuralNetwork
 
 #hyperparams
 batch_size = 16
-epochs = 50
+epochs = 100
 lr = 0.001
 
 
