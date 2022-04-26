@@ -28,4 +28,5 @@ def recommend(X):
         X[i, 6] = ord(X[i, 6]) - ord('A')
     
     model = train()
+    
     return model.kneighbors(X)
