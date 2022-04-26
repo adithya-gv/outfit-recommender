@@ -60,17 +60,17 @@ After clustering the data and assigning labels to the 35,000 clothing samples, w
 To create the clothing recommender system, we used the purchase history of a customer and the clothing items in the purchase history. Because we have the label of the clothing item a customer has bought, we can determine the most similar clothing pieces in that cluster. Using KNN, we determined the five closest clothing pieces, which we then output with a score indicating similarity.
 
 ## Results and Discussion: Similarity Clustering
-For the clustering part of the project, we first performed some data cleaning and pre-processingto make our downstream task easier to manage and faster overall. We first compressed/resized all our images to a smaller resolution of (250,250) before performing any operations on the images. PCA was next run on both RGB and grayscale images on around 30,000 images. The PCA image compression on RGB images resulted in 16 features used from the image to recover 90% accuracy, as shown in Figure 1.
+For the clustering part of the project, we first performed some data cleaning and pre-processingto make our downstream task easier to manage and faster overall. We first compressed/resized all our images to a smaller resolution of (250,250) before performing any operations on the images. PCA was next run on both RGB and grayscale images on around 30,000 images. The PCA image compression on RGB images resulted in 16 features used from the image to recover 90% accuracy, as shown in Figure 4.
 
-![Figure 1](docs/assets/Recovered_Variance_Ratio.png)
+![Figure 4](docs/assets/Recovered_Variance_Ratio.png)
 
-The PCA image compression on grayscale images also resulted in 16 features used from the image to recover at least 90% variance, as shown in Figure 2.
+The PCA image compression on grayscale images also resulted in 16 features used from the image to recover at least 90% variance, as shown in Figure 5.
 
-![Figure 2](docs/assets/Recovered_Variance_Ratio_Grayscale.png)
+![Figure 5](docs/assets/Recovered_Variance_Ratio_Grayscale.png)
 
 K-means was run on 200 RGB images in order to generate a graph of inertia versus cluster count, as shown below. 
 
-![Figure 3](docs/assets/Elbow_Curve.png)
+![Figure 6](docs/assets/Elbow_Curve.png)
 
 Based on the elbow curve, we decided to use 13 clusters as our optimal cluster count.
 
@@ -78,7 +78,7 @@ K-means with 13 clusters was then run for RGB images to generate labels for each
 
 K-means was then run on 200 grayscale images in order to generate a graph of inertia versus cluster count, as shown below. 
 
-![Figure 4](docs/assets/Elbow_Curve_Grayscale.png)
+![Figure 7](docs/assets/Elbow_Curve_Grayscale.png)
 
 We then ran agglomerative and K-means with 15 clusters on all the grayscale images. The number of clusters may be higher because the features take into account the shape of the article of clothing more in PCA when the image is grayscale versus when the image is in RGB. The RGB clusters may have more similarity in color, but the grayscale may have more similarity in shape.
 
@@ -95,10 +95,10 @@ The clustering results can be seen in the results/data folder, which contains ma
 In addition to the csv files we have generated, we have created a script to generate examples of what the images in each cluster looks like. By simply running the src/cluster_visual_csv.py script,  a new folder at results/visuals will be created that will contain a pdf of the images in each cluster given a specified subdirectory and clustering method (kmeans or agglomerative). Some examples can be seen below in Figure 5 and 6.
 
 Cluster made by K-Means clustering algorithm:
-![Figure 5](docs/assets/KMeans_Clustering_visual.png)
+![Figure 8](docs/assets/KMeans_Clustering_visual.png)
 
 Cluster made by Agglomerative clustering algorithm:
-![Figure 6](docs/assets/Agglomerative_Clustering_visual.png)
+![Figure 9](docs/assets/Agglomerative_Clustering_visual.png)
 
 Overall, our visual observations match up with our reported statistics (Davies-Bouldin Index and Sillhouette Score) and support the notion that on average, Agglomerative Clustering does a better job at putting like-clothing together in a group. K-Means also does fairly well, but there are several situations where many unrelated clothing items are in a cluster together. 
 
