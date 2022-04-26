@@ -114,5 +114,5 @@ def get_clothing_items():
         new_path = "data/customer_samples/customer_data_" + str(i) + ".csv"
         articles.iloc[indices].to_csv(new_path, index=False)
 
-
+preprocess_customers()
 get_clothing_items()
