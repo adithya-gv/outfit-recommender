@@ -9,7 +9,7 @@ Video Link: https://www.youtube.com/watch?v=y5HWehGLPQU
 Website Link: https://adithya-gv.github.io/outfit-recommender/
 
 ## Introduction
-Clothing shopping is a frequent occurrence, yet it remains a difficult and personal decision. Given our history of shopping and the characteristics of clothing items, we believe that automation and machine learning have the power to boost our decision making. There are many technologies targeting the fashion industry, usually leveraging data about customer habits and product appearances to make smart recommendations. 
+Clothing shopping is a frequent occurrence, yet it remains a difficult and personal decision. Given our history of shopping and the characteristics of clothing items, we believe that automation and machine learning have the power to boost our decision making. There are many technologies targeting the fashion industry, usually leveraging data about customer habits and product appearances to make smart recommendations. Not only can having some assistance reduce the time commitment and mistaken purchases consumers may have, but also increase positive reviews and reduce return costs for companies.
 
 
 ### Background
@@ -18,19 +18,26 @@ Recommendation systems using visual, linguistic, or tabular data are a well-rese
 ## Problem Statement
 
 ### Motivation
-The motivation of our project is to bring recommendation system algorithms to an area of shopping that is highly personal and varied: clothes shopping. A secondary motivation was to go beyond simple analysis of purchasing data and use data intrinsic to the clothing and users to provide recommendations that target the user's specific features.
+The motivation of our project is to bring recommendation system algorithms to an area of shopping that is highly personal and varied: clothes shopping. A secondary motivation was to go beyond simple analysis of purchasing data and use data intrinsic to the clothing and users to provide recommendations that target the user's specific features. While other recommendation models may predominantly use an individual consumer's history of transactions, ours seeks to use the clothing itself.
 
 ### Our Problems
 
 Our problem is twofold. 
 1. Measure the similarity between two arbitrary pieces of clothing and use this measurement to construct groupings of similar clothings. 
-2. Construct a recommender system that will recommend clothing based on a user's purchase history. 
+2. Construct a recommender system that will recommend clothing based on a clothing item that a customer has purchased.
 
 ## Dataset Overview
-The dataset we plan to use is the H&M clothing purchase history dataset (https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/overview). The dataset has over 1 million logged clothing transactions, each attributed to a given ID representing a distinct person. The dataset also has metadata for clothing and images of each clothing item. However, the dataset is extremely large and it would not be viable to run all of our models on the entirety of the data due to our computation limitations. Because of this, we have limited the dataset to around the first 35,000 of the 100,000 images of clothing. Since the entire dataset is split into 95 folders each of which have a random sample of 
-clothing variants, 35% of this dataset should ensure that we have every possible type of clothing to successfully build our model. 
+The dataset we plan to use is the H&M clothing purchase history dataset (https://www.kaggle.com/c/h-and-m-personalized-fashion-recommendations/overview). The dataset has over 1 million logged clothing transactions, each attributed to a given ID representing a distinct person. The dataset also has metadata for clothing and images of each clothing item. However, the dataset is extremely large and it would not be viable to run clustering on the entirety of the data due to our computation limitations. Because of this, we have limited the dataset to around the first 35,000 of the 100,000 images of clothing. Since the entire dataset is split into 95 folders each of which have a random sample of 
+clothing variants, we use 35% of this dataset should ensure that we have every possible type of clothing to successfully build our clustering model. From the clustering model, we create and compare both a Neural Net and a Convolutional Neural Net in classifying the rest of the data. I.e, because we cannot run clustering on all of the image data, we use a clustering approach on 35,000 data points, then, using these as labels for that data, we train a neural net and CNN to predict the clusters of the rest of the data.
 
-## Intended Methods
+![Figure 1: An example of data set clothing image](docs/assets/exampleImage.png)
+![Figure 2](docs/assets/exampleImageData1.png)
+![Figure 2 Continued: An example of data set clothing data](docs/assets/exampleImageData2.png)
+![Figure 3: An example of customer data](docs/assets/exampleConsumer.png)
+
+
+
+## Methods
 Each of the two subproblems within our overall problem has distinct approaches.
 
 ### Clothing Similarity
@@ -45,8 +52,12 @@ First, we used the Elbow method on K-means to determine the optimal number of cl
 
 Next, to evaluate which metric was better, we used two Clustering Evaluation Techniques, the Davies-Bouldin Index and Sillhouette Score. We ran each clustering algorithm 10 times on the same dataset to determine average values for each.
 
+Using the clustering method with the better scores, we assigned the 35,000 images a label based on the cluster number.
+
 ### Recommender System
-To create the clothing recommender system, we plan to test a variety of popular approaches. The two front-runners for our recommender system so far are an artificial neural network, and a support vector machine. 
+After clustering the data and assigning labels to the 35,000 clothing samples, we created a neural net to classify the rest of the 100,000 sample data set into those clusters. We split the 35,000 clothing sample data into training and test data and ran our model on it. Using this model, we assigned labels to the rest of the data. We only used tabular data for the recommender, meaning letter and phrases were not included. 
+
+To create the clothing recommender system, we used the purchase history of a customer and the clothing items in the purchase history. Because we have the label of the clothing item a customer has bought, we can determine the most similar clothing pieces in that cluster. Using KNN, we determined the five closest clothing pieces, which we then output with a score indicating similarity.
 
 ## Results and Discussion: Similarity Clustering
 For the clustering part of the project, we first performed some data cleaning and pre-processingto make our downstream task easier to manage and faster overall. We first compressed/resized all our images to a smaller resolution of (250,250) before performing any operations on the images. PCA was next run on both RGB and grayscale images on around 30,000 images. The PCA image compression on RGB images resulted in 16 features used from the image to recover 90% accuracy, as shown in Figure 1.
