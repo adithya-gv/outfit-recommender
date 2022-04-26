@@ -102,7 +102,6 @@ def train_loop(train_loader, model, loss_fn, optimizer):
         # Compute prediction and loss
         pred = model(X)
         loss = loss_fn(pred, y)
-        print(pred)
 
         # Backpropagation
         optimizer.zero_grad()
