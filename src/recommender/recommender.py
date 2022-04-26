@@ -47,11 +47,20 @@ def show_image(indexes):
     plt.show()
 
 
-input_index = [140] #this is the input image that you want to find similar items to 
-input = pd.read_csv("data/articles.csv")[['product_type_no', 'graphical_appearance_no', 'colour_group_code', 'perceived_colour_value_id', 'perceived_colour_master_id', 'department_no', 'index_code', 'index_group_no', 'section_no', 'garment_group_no']].to_numpy()[input_index[0]]
-input = input.reshape((1, input.shape[0]))
-show_image(input_index) # displays the input image
+for i in range(5):
+    path = "data/customer_samples/customer_data_" + str(i) + ".csv"
+    customerPurchases = pd.read_csv(path)[['product_type_no', 'graphical_appearance_no', 'colour_group_code', 'perceived_colour_value_id', 'perceived_colour_master_id', 'department_no', 'index_code', 'index_group_no', 'section_no', 'garment_group_no']]
+    customerPurchases = customerPurchases.to_numpy()
+    allRecommendations = recommend(customerPurchases)[1]
+    for i in allRecommendations:
+        show_image(i)
 
-indexes = recommend(input)
-output_indexes = indexes[1][0]
-show_image(output_indexes) # displays all 5 output images
+
+# input_index = [140] #this is the input image that you want to find similar items to 
+# input = pd.read_csv("data/articles.csv")[['product_type_no', 'graphical_appearance_no', 'colour_group_code', 'perceived_colour_value_id', 'perceived_colour_master_id', 'department_no', 'index_code', 'index_group_no', 'section_no', 'garment_group_no']].to_numpy()[input_index[0]]
+# input = input.reshape((1, input.shape[0]))
+# show_image(input_index) # displays the input image
+
+# indexes = recommend(input)
+# output_indexes = indexes[1][0]
+# show_image(output_indexes) # displays all 5 output images
