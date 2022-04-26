@@ -8,7 +8,7 @@ from neural_net import NeuralNetwork
 
 #hyperparams
 batch_size = 16
-epochs = 100
+epochs = 50
 lr = 0.001
 
 
@@ -33,11 +33,19 @@ def preprocess_data():
     for i in range(len(X[:, 6])):
         X[i, 6] = ord(X[i, 6]) - ord('A')
  
+    for i in range(np.shape(X)[1]) :
+        X[:, i] = (X[:, i] - X[:, i].mean()) / X[:, i].std()
+    
+    real_y = np.zeros(shape=(N, 15))
+    
+    for i in range(N):
+        real_y[i, y[i, 0]] = 1
+
     X = X.astype(np.float32)
-    y = y.astype(np.float32)
+    real_y = real_y.astype(np.float32)
 
 
-    return X, y
+    return X, real_y
 
 
 def main():
@@ -66,9 +74,11 @@ def main():
 
     #datasets
     print("Train size", train_size)
-    print("Train dataset", train_dataset)
     print("Val size", val_size)
-    print("Val dataset", val_dataset)
+
+    print()
+    print()
+    print()
 
     # create dataloaders
 
@@ -77,7 +87,7 @@ def main():
 
     #instantiate network
     model = NeuralNetwork()
-    loss_fn = torch.nn.MSELoss()
+    loss_fn = torch.nn.CrossEntropyLoss()
     optimizer = torch.optim.SGD(model.parameters(), lr=lr)
 
     #start training loop
@@ -85,6 +95,7 @@ def main():
     for epoch in range(epochs):
 
         #training phase
+        print("Epoch #", epoch)
         train_loop(train_loader, model, loss_fn, optimizer)
         val_loop(val_loader, model, loss_fn)
             
@@ -108,10 +119,6 @@ def train_loop(train_loader, model, loss_fn, optimizer):
         loss.backward()
         optimizer.step()
 
-        if batch_num % 100 == 0:
-            loss, current = loss.item(), batch_num * len(X)
-            print(f"loss: {loss:>7f}  [{current:>5d}/{total:>5d}]")
-
 
 def val_loop(val_loader, model, loss_fn):
     test_loss, correct = 0, 0
@@ -124,7 +131,7 @@ def val_loop(val_loader, model, loss_fn):
             N,_ = X.shape
             pred = model(X)
             test_loss += loss_fn(pred, y).item()
-            correct += (pred.argmax(1).reshape(N,1) == y).type(torch.float).sum().item()
+            correct += (pred.argmax(1).reshape(N,1) == y.argmax(1).reshape(N,1)).type(torch.float).sum().item()
 
     test_loss /= val_total_batches
     correct /= float(val_total)
