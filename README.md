@@ -31,9 +31,16 @@ The dataset we plan to use is the H&M clothing purchase history dataset (https:/
 clothing variants, we use 35% of this dataset should ensure that we have every possible type of clothing to successfully build our clustering model. From the clustering model, we create and compare both a Neural Net and a Convolutional Neural Net in classifying the rest of the data. I.e, because we cannot run clustering on all of the image data, we use a clustering approach on 35,000 data points, then, using these as labels for that data, we train a neural net and CNN to predict the clusters of the rest of the data.
 
 ![Figure 1: An example of data set clothing image](docs/assets/exampleImage.png)
+Figure 1: An example of data set clothing image
+
+
 ![Figure 2](docs/assets/exampleImageData1.png)
-![Figure 2 Continued: An example of data set clothing data](docs/assets/exampleImageData2.png)
+![Figure 2 Continued](docs/assets/exampleImageData2.png)
+Figure 2: An example of data set clothing data
+
+
 ![Figure 3: An example of customer data](docs/assets/exampleConsumer.png)
+Figure 3: An example of customer data
 
 
 
