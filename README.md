@@ -4,7 +4,7 @@ Group 40's CS 4641 Project: a clothing recommendation system.
 
 Project by: Jackson Isenberg, Rishabh Jain, Rahi Kotadia, Adithya Vasudev, and Vivek Vijaykumar
 
-Video Link: https://www.youtube.com/watch?v=y5HWehGLPQU
+Video Link: https://www.youtube.com/watch?v=JYWfbxTGsCA
 
 Website Link: https://adithya-gv.github.io/outfit-recommender/
 
