@@ -10,7 +10,7 @@ from cnn import CNN
 
 
 #hyperparameters
-epochs = 5
+epochs = 10
 lr = 0.001
 batch_size = 32
 
@@ -70,6 +70,7 @@ def main():
         running_loss = train_loop(train_loader, model, loss_fn, optimizer)
         print("Running Loss:", running_loss)
         val_loop(val_loader, model, loss_fn)
+        torch.save(model.state_dict(), "data/training/image_model_" + str(epoch) + ".pth")
             
     print("Done!")
     torch.save(model.state_dict(), "data/training/image_model.pth")
@@ -94,7 +95,7 @@ def train_loop(train_loader, model, loss_fn, optimizer):
         loss.backward()
         optimizer.step()
         running_loss += loss.item()
-        if batch_num % 100 == 0:
+        if batch_num % 10 == 0:
             loss, current = loss.item(), batch_num * len(X)
             print(f"loss: {loss:>7f}  [{current:>5d}/{total:>5d}]")
     return running_loss
@@ -108,10 +109,16 @@ def val_loop(val_loader, model, loss_fn):
             
     with torch.no_grad():
         for batch_num, (X,y) in enumerate(val_loader):
-            N,_ = X.shape
+            N= X.shape[0]
             pred = model(X)
+            y = y.type(torch.long)
+            # print("Prediction", pred)
+            # print("Class pred", pred.argmax(1).reshape(N,1))
+            # print("Labels", y.reshape(N,1))
+            # print(y.shape)
             test_loss += loss_fn(pred, y).item()
-            correct += (pred.argmax(1).reshape(N,1) == y).type(torch.float).sum().item()
+            count = (pred.argmax(1).reshape(N,1) == y.reshape(N,1)).type(torch.float).sum().item()
+            correct += count
 
     test_loss /= val_total_batches
     correct /= float(val_total)

@@ -10,6 +10,7 @@ from neural_net import NeuralNetwork
 batch_size = 16
 epochs = 100
 lr = 0.001
+# lr_range = [0.01, 0.005, 0.001,0.0001]
 
 
 class myDataSet(Dataset):
@@ -91,8 +92,14 @@ def main():
     optimizer = torch.optim.SGD(model.parameters(), lr=lr)
 
     #start training loop
-
+    # epoch_range= [0,6,15,25]
     for epoch in range(epochs):
+        # if epoch == epoch_range[1]:
+        #     optimizer = torch.optim.SGD(model.parameters(), lr=lr_range[1])
+        # elif epoch == epoch_range[2]:
+        #     optimizer = torch.optim.SGD(model.parameters(), lr=lr_range[2])
+        # elif epoch == epoch_range[3]:
+        #     optimizer = torch.optim.SGD(model.parameters(), lr=lr_range[3])
 
         #training phase
         print("Epoch #", epoch)
