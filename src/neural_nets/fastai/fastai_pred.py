@@ -35,7 +35,7 @@ print(len(clusters))
 print(len(df))
 df['cluster'] = clusters
 
-df.to_csv(output_file)
+df.to_csv(output_file,index=False)
 
 
 
