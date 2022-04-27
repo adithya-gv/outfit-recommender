@@ -14,7 +14,7 @@ learn = tabular_learner(dls, metrics=accuracy)
 learn.fit_one_cycle(10)
 learn.show_results()
 
-learn.export('data/training/model.pkl')
+learn.export('models/model.pkl')
 print(learn.recorder)
 learn.recorder.plot_loss()
 
