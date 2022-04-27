@@ -138,7 +138,7 @@ Figure 13: Validation accuracy for our neural network
 
 We then switched to leveraging a libary called FastAI to develop and train our deep neural network, since it had paramters that were designed for tabular input data. Here is the structure and training data for this network. 
 
-![Figure 14]((docs/assets/fastapiNNstructure.png)
+![Figure 14](docs/assets/fastapiNNstructure.png)
 ![Figure 15](docs/assets/fastapiNNdetail.png)
 
 ![Figure 16](docs/assets/loss_plot.png)
