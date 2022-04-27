@@ -61,13 +61,14 @@ Next, to evaluate which metric was better, we used two Clustering Evaluation Tec
 
 Using the clustering method with the better scores, we assigned the 35,000 images a label based on the cluster number.
 
-### Recommender System
-After clustering the data and assigning labels to the 35,000 clothing samples, we created a neural net to classify the rest of the 100,000 sample data set into those clusters. We split the 35,000 clothing sample data into training and test data and ran our model on it. Using this model, we assigned labels to the rest of the data. We only used tabular data for the recommender, meaning letter and phrases were not included. 
+### Recommender System (Stage 1: K-Nearest Neighbors)
+To create the clothing recommender system, we used the purchase history of a customer and the clothing items in the purchase history. Using KNN, we trained a classifier on every clustered image. Using this, we determined the five closest clothing pieces, which we then output with a score indicating similarity, based on Minkowski distance.
 
-To create the clothing recommender system, we used the purchase history of a customer and the clothing items in the purchase history. Because we have the label of the clothing item a customer has bought, we can determine the most similar clothing pieces in that cluster. Using KNN, we determined the five closest clothing pieces, which we then output with a score indicating similarity.
+### Recommender System (Stage 2: Neural Network-KNN Chain)
+This variant of the recommender system uses the KNN trained above in combination with a neural network to make recommendations. Using our clustering data, we trained a neural network to predict the clothing cluster of a given clothing item. We then used the KNN algorithm, trained on every image within the cluster, to determine the five closest clothing pieces, which we then output with a score indicating similarity, based on Minkowski distance.
 
 ## Results and Discussion: Similarity Clustering
-For the clustering part of the project, we first performed some data cleaning and pre-processingto make our downstream task easier to manage and faster overall. We first compressed/resized all our images to a smaller resolution of (250,250) before performing any operations on the images. PCA was next run on both RGB and grayscale images on around 30,000 images. The PCA image compression on RGB images resulted in 16 features used from the image to recover 90% accuracy, as shown in Figure 4.
+For the clustering part of the project, we first performed some data cleaning and pre-processing to make our downstream task easier to manage and faster overall. We first compressed/resized all our images to a smaller resolution of (250,250) before performing any operations on the images. PCA was next run on both RGB and grayscale images on around 30,000 images. The PCA image compression on RGB images resulted in 16 features used from the image to recover 90% accuracy, as shown in Figure 4.
 
 ![Figure 4](docs/assets/Recovered_Variance_Ratio.png)
 
@@ -110,8 +111,10 @@ Cluster made by Agglomerative clustering algorithm:
 Overall, our visual observations match up with our reported statistics (Davies-Bouldin Index and Sillhouette Score) and support the notion that on average, Agglomerative Clustering does a better job at putting like-clothing together in a group. K-Means also does fairly well, but there are several situations where many unrelated clothing items are in a cluster together. 
 
 
-## Potential Results: Recommender System (Supervised Learning)
-The recommendation system should be able to take in a customer's purchase history of clothing and recommend items for them to purchase based on similarity with prior purchases and potential matches. 
+## Results and Discussion (Recommender System Stage 1: KNN)
+
+## Results and Discussion (Recommender System Stage 2: Neural Network-KNN Chain)
+
 
 ## References
 
