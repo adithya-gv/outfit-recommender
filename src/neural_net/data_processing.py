@@ -30,7 +30,7 @@ def preprocess_customers():
     c = customers.to_numpy()[:, 1]
     print(c[0])
     indices = result.to_numpy()[:, 0]
-    for i in range(0, 1000):
+    for i in range(0, 5):
         splice = []
         print(i)
         index = np.where(c == indices[i])
@@ -48,7 +48,7 @@ def create_data():
     articles = pd.read_csv("data/training/articles_subset.csv")
     articles = articles.to_numpy().flatten()
     datas = []
-    for k in range(0, 1000):
+    for k in range(0, 5):
         print(k)
         path = "data/customer_samples/customer_data_" + str(k) + ".csv"
         df = pd.read_csv(path)
@@ -99,6 +99,20 @@ def create_dataset():
     final_articles.reset_index(drop=True, inplace=True)
     pd.concat([final_articles, new_vectors], ignore_index=True, axis=1).to_csv("data/training/dataset.csv", index=False)
 
+def get_clothing_items():
+    articles = pd.read_csv("data/articles.csv")
+    articles2 = articles.to_numpy()[:, 0]
+    for i in range(0, 5):
+        path = "data/customer_samples/customer_data_" + str(i) + ".csv"
+        df = pd.read_csv(path)
+        A = df.to_numpy()[:, 2]
+        indices = []
+        for d in A:
+            index = np.where(articles2 == d)[0]
+            if (np.shape(index)[0] > 0):
+                indices.append(index[0])
+        new_path = "data/customer_samples/customer_data_" + str(i) + ".csv"
+        articles.iloc[indices].to_csv(new_path, index=False)
 
-create_vectors()
-create_dataset()
+preprocess_customers()
+get_clothing_items()
