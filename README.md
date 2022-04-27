@@ -142,6 +142,7 @@ We then switched to a trained FastAI deep neural network. Here is the structure 
 ![Figure 15](docs/assets/fastapiNNstructure.png)
 
 ![Figure 16](docs/assets/loss_plot.png)
+
 Figure 16: Training loss for deep NN
 
 ![Figure 17](docs/assets/faNNTrainingAccuracy.png)
