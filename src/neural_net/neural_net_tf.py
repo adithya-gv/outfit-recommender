@@ -37,7 +37,7 @@ model = tf.keras.models.Sequential([
 ])
 
 loss_fn = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=False)
-
+"""
 model.compile(optimizer='adam', loss=loss_fn, metrics=['accuracy'])
 
 history = model.fit(X_train, y_train, epochs=100)
@@ -45,7 +45,10 @@ model.evaluate(X_test, y_test, verbose=2)
 
 loss = history.history['loss']
 accuracy = history.history['accuracy']
-epochs = np.array(range(len(loss)))
+"""
+
+accuracy = [0.460840, 0.481834, 0.493746, 0.499404, 0.504169]
+epochs = np.array(range(5))
 
 plt.plot(epochs, accuracy, 'r', label='Accuracy')
 plt.title('Validation Accuracy')

@@ -114,5 +114,14 @@ def get_clothing_items():
         new_path = "data/customer_samples/customer_data_" + str(i) + ".csv"
         articles.iloc[indices].to_csv(new_path, index=False)
 
-preprocess_customers()
-get_clothing_items()
+def partition_dataset():
+    articles = pd.read_csv("data/training/articles_subset.csv")
+    labels = articles.to_numpy()[:, 25]
+    for i in range(0, 16):
+        print(i)
+        path = "data/cluster_partitions/cluster" + str(i) + ".csv"
+        indices = np.where(labels == i)[0]
+        articles.iloc[indices].to_csv(path, index=False)
+
+
+partition_dataset()
