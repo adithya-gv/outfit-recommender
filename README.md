@@ -123,6 +123,10 @@ Overall, our visual observations match up with our reported statistics (Davies-B
 ## Results and Discussion (Recommender System Stage 2: Neural Network-KNN Chain)
 
 
+## Conclusion
+
+We set out to identify similiarities in a large dataset of images and build a recommender system to predict clothing based on purchased clothing. This is a difficult task because there are a large number of features associated with a piece of clothing, and a customer may purchase clothing arbitrarily. The structure of the data also makes it difficult to train a neural network to do the recommendations [WHY I DONT KNOW LOL]. The recommendation system may be of marginal use to a customer looking to find new clothing to purchase, however, customers don't necessarily just want to buy similar clothing - they want a flexible wardrobe. With future work we could use an autoencoder for better recommendation results. 
+
 ## References
 
 1.  "Aesthetic-based Clothing Recommendation" (https://arxiv.org/pdf/1809.05822.pdf)  - International World Wide Web Conference (WWW)
