@@ -36,17 +36,20 @@ model = tf.keras.models.Sequential([
     tf.keras.layers.Dense(15, activation='softmax')
 ])
 
-loss_fn = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=False)
-"""
-model.compile(optimizer='adam', loss=loss_fn, metrics=['accuracy'])
 
+loss_fn = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=False)
+
+model.compile(optimizer='adam', loss=loss_fn, metrics=['accuracy'])
+model.fit(X_train, y_train, epochs=1)
+print(model.summary())
+"""
 history = model.fit(X_train, y_train, epochs=100)
 model.evaluate(X_test, y_test, verbose=2)
 
 loss = history.history['loss']
 accuracy = history.history['accuracy']
 """
-
+"""
 accuracy = [0.460840, 0.481834, 0.493746, 0.499404, 0.504169]
 epochs = np.array(range(5))
 
@@ -57,3 +60,4 @@ plt.ylabel('Loss')
 plt.legend()
 plt.show()
 
+"""
