@@ -113,6 +113,8 @@ Overall, our visual observations match up with our reported statistics (Davies-B
 
 ## Results and Discussion (Recommender System Stage 1: KNN)
 
+## Results and Discussion (Recommender System Stage 2: Neural Network-KNN Chain)
+
 
 ## References
 
